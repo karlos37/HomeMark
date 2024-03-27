@@ -76,3 +76,7 @@ git-ssh
 git-ssh.pub
 
 *_BackUpThisFolder_*
+
+# OS generated files #
+######################
+.DS_Store

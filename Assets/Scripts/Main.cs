@@ -6,10 +6,11 @@ using UnityEngine.EventSystems;
 
 public class Main : MonoBehaviour
 {
-    [SerializeField] Canvas mainMenu;
-	[SerializeField] Canvas joinMenu;
+    [SerializeField] private Canvas mainMenu;
+	[SerializeField] private Canvas joinMenu;
 
-    [SerializeField] GameObject theater;
+    [SerializeField] private GameObject theater;
+	[SerializeField] private GameObject reticle;
 
 	[SerializeField] private XRCardboardInputModule vrInputModule;
 	[SerializeField] private StandaloneInputModuleCopy standardInputModuleCopy;
@@ -54,7 +55,7 @@ public class Main : MonoBehaviour
 
     void navigateMainMenu()
     {
-		if (Input.GetButtonDown("js2"))
+		if (Input.GetKeyDown("m"))
 		{
 			if (EventSystem.current.currentSelectedGameObject == mainMenu.transform.Find("IntroPanel").Find("Join Room Button").gameObject)
 			{
@@ -63,14 +64,13 @@ public class Main : MonoBehaviour
 
 				EventSystem.current.SetSelectedGameObject(null);
 				EventSystem.current.SetSelectedGameObject(joinMenu.transform.Find("JoinPanel").Find("Room1").Find("Button").gameObject);
-				Debug.Log(standardInputModuleCopy.enabled);
 			}
 		}
 	}
 
 	void navigateJoinMenu()
 	{
-		if (Input.GetButtonDown("js2"))
+		if (Input.GetKeyDown("m"))
 		{
 			if (EventSystem.current.currentSelectedGameObject == joinMenu.transform.Find("JoinPanel").Find("Room1").Find("Button").gameObject)
 			{
@@ -80,6 +80,7 @@ public class Main : MonoBehaviour
 
 				standardInputModuleCopy.enabled = false;
 				vrInputModule.enabled = true;
+				reticle.SetActive(true);
 			}
 		}
 	}
