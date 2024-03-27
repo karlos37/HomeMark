@@ -79,5 +79,8 @@ git-ssh.pub
 *_BackUpThisFolder_*
 
 # OS generated files #
-######################
 .DS_Store
+**/**/.DS_Store
+
+#BuildSettings
+ProjectSettings/EditorBuildSettings.asset
