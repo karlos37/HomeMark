@@ -62,7 +62,7 @@ public class Main : MonoBehaviour
 				joinMenu.enabled = true;
 
 				EventSystem.current.SetSelectedGameObject(null);
-				EventSystem.current.SetSelectedGameObject(joinMenu.transform.Find("Panel").Find("Button").gameObject);
+				EventSystem.current.SetSelectedGameObject(joinMenu.transform.Find("JoinPanel").Find("Room1").Find("Button").gameObject);
 				Debug.Log(standardInputModuleCopy.enabled);
 			}
 		}
@@ -72,7 +72,7 @@ public class Main : MonoBehaviour
 	{
 		if (Input.GetButtonDown("js2"))
 		{
-			if (EventSystem.current.currentSelectedGameObject == joinMenu.transform.Find("Panel").Find("Button").gameObject)
+			if (EventSystem.current.currentSelectedGameObject == joinMenu.transform.Find("JoinPanel").Find("Room1").Find("Button").gameObject)
 			{
 				mainMenu.enabled = false;
 				joinMenu.enabled = false;
