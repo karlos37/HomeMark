@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayVideo : MonoBehaviour
+public class VideoPlayer : MonoBehaviour
 {
     [SerializeField] GameObject videoPlayer;
     [SerializeField] Canvas canvas;
     // Start is called before the first frame update
     void Start()
     {
-        //Playvideo();
+        PlayVideo();
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class PlayVideo : MonoBehaviour
         
     }
 
-    public void Playvideo()
+    public void PlayVideo()
     {
         canvas.enabled = false;
         videoPlayer.SetActive(true);
