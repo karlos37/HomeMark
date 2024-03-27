@@ -54,7 +54,7 @@ public class Main : MonoBehaviour
 
     void navigateMainMenu()
     {
-		if (Input.GetButtonDown("js2"))
+		if (Input.GetKeyDown("m"))
 		{
 			if (EventSystem.current.currentSelectedGameObject == mainMenu.transform.Find("IntroPanel").Find("Join Room Button").gameObject)
 			{
@@ -62,17 +62,16 @@ public class Main : MonoBehaviour
 				joinMenu.enabled = true;
 
 				EventSystem.current.SetSelectedGameObject(null);
-				EventSystem.current.SetSelectedGameObject(joinMenu.transform.Find("Panel").Find("Button").gameObject);
-				Debug.Log(standardInputModuleCopy.enabled);
+				EventSystem.current.SetSelectedGameObject(joinMenu.transform.Find("JoinPanel").Find("Room1").Find("Button").gameObject);
 			}
 		}
 	}
 
 	void navigateJoinMenu()
 	{
-		if (Input.GetButtonDown("js2"))
+		if (Input.GetKeyDown("m"))
 		{
-			if (EventSystem.current.currentSelectedGameObject == joinMenu.transform.Find("Panel").Find("Button").gameObject)
+			if (EventSystem.current.currentSelectedGameObject == joinMenu.transform.Find("JoinPanel").Find("Room1").Find("Button").gameObject)
 			{
 				mainMenu.enabled = false;
 				joinMenu.enabled = false;
