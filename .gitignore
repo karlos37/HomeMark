@@ -80,4 +80,9 @@ git-ssh.pub
 
 # OS generated files #
 ######################
-.DS_Store
+**/.DS_Store
+
+# Build Settings
+/ProjectSettings/EditorBuildSettings.asset
+/ProjectSettings/ProjectSettings.asset
+/ProjectSettings/TimelineSettings.asset
