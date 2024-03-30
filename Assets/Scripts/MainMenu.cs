@@ -10,13 +10,19 @@ public class MainMenu : MonoBehaviour
 
 	[SerializeField] private XRCardboardInputModule vrInputModule;
 	[SerializeField] private StandaloneInputModuleCopy standardInputModuleCopy;
-
-	private string[] mainMenuNames;
+	[SerializeField] private GameObject eventSystemObject;
 
 	// Start is called before the first frame update
 	void Start()
     {
-		mainMenuNames = new string[2] { "Create Room Button", "Join Room Button" };
+		eventSystemObject.SetActive(false);
+		eventSystemObject.SetActive(true);
+
+		standardInputModuleCopy.enabled = true;
+		vrInputModule.enabled = false;
+
+		EventSystem.current.SetSelectedGameObject(null);
+		EventSystem.current.SetSelectedGameObject(transform.Find("IntroPanel").Find("Create Room Button").gameObject);
 	}
 
     // Update is called once per frame
@@ -24,6 +30,9 @@ public class MainMenu : MonoBehaviour
     {
 		if (vrInputModule.enabled)
 		{
+			eventSystemObject.SetActive(false);
+			eventSystemObject.SetActive(true);
+
 			standardInputModuleCopy.enabled = true;
 			vrInputModule.enabled = false;
 
@@ -40,6 +49,10 @@ public class MainMenu : MonoBehaviour
 			if (EventSystem.current.currentSelectedGameObject == transform.Find("IntroPanel").Find("Join Room Button").gameObject)
 			{
 				SceneManager.LoadScene("JoinMenu");
+			}
+			else if (EventSystem.current.currentSelectedGameObject == transform.Find("IntroPanel").Find("Create Room Button").gameObject)
+			{
+				SceneManager.LoadScene("CreateMenu");
 			}
 		}
 	}

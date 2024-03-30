@@ -20,7 +20,7 @@ public class KeyboardOutline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (EventSystem.current.currentSelectedGameObject.name == "Search")
+		if (EventSystem.current.currentSelectedGameObject.name == "Search" || EventSystem.current.currentSelectedGameObject.name == "RoomInput")
 		{
 			EventSystem.current.SetSelectedGameObject(null);
 			EventSystem.current.SetSelectedGameObject(transform.GetChild(1).gameObject);

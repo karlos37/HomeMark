@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrInputModule: {fileID: 923873623}
   standardInputModuleCopy: {fileID: 923873626}
-  eventSystemObject: {fileID: 0}
+  eventSystemObject: {fileID: 923873616}
 --- !u!1 &2097848402
 GameObject:
   m_ObjectHideFlags: 0

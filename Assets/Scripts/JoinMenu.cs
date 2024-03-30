@@ -12,8 +12,6 @@ using static Room;
 
 public class JoinMenu : MonoBehaviour
 {
-	[SerializeField] private Sprite backgroundSprite;
-	[SerializeField] private GameObject keyboard;
 	[SerializeField] private TMP_InputField search;
 
 	[SerializeField] private XRCardboardInputModule vrInputModule;
@@ -32,18 +30,18 @@ public class JoinMenu : MonoBehaviour
 		searchText = "";
 
 		allRooms = new List<Room>();
-		allRooms.Add(new Room("Test Room 1", true, null, "Now Playing: Demo Part 1"));
-		allRooms.Add(new Room("testjkhskjsl", false, "password", "Pirates of the Caribbean Part 79"));
-		allRooms.Add(new Room("apsodur", true, null, "9821374slkjdf"));
-		allRooms.Add(new Room("djg8439jd", false, "password", "aisduasdas8d7"));
-		allRooms.Add(new Room("98^&3js^&", true, null, "2984734289347"));
-		allRooms.Add(new Room("sjkdfhchzl98", false, "password", " 8372498374238"));
-		allRooms.Add(new Room("ijjasjd8923jksd", true, null, "asdh83h4"));
-		allRooms.Add(new Room("387927838927398", false, "password", "superman"));
-		allRooms.Add(new Room("98dgss^&", true, null, "2984734289347"));
-		allRooms.Add(new Room("s3434hchzl98", false, "password", " 8372498374238"));
-		allRooms.Add(new Room("ijsdf38923jksd", true, null, "Pirates of the Caribbean Part 19"));
-		allRooms.Add(new Room("38sdfb./398", false, "password", "Pirates of the Caribbean Part 49"));
+		allRooms.Add(new Room("Test Room 1", true, "Now Playing: Demo Part 1", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("testjkhskjsl", false, "password", "Pirates of the Caribbean Part 79", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("apsodur", true, "9821374slkjdf", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("djg8439jd", false, "password", "aisduasdas8d7", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("98^&3js^&", true, "2984734289347", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("sjkdfhchzl98", false, "password", " 8372498374238", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("ijjasjd8923jksd", true, "asdh83h4", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("387927838927398", false, "password", "superman", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("98dgss^&", true, "2984734289347", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("s3434hchzl98", false, "password", " 8372498374238", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("ijsdf38923jksd", true, "Pirates of the Caribbean Part 19", 0.5f, 0.5f, "default"));
+		allRooms.Add(new Room("38sdfb./398", false, "password", "Pirates of the Caribbean Part 49", 0.5f, 0.5f, "default"));
 
 		rooms = new List<Room>();
 		rooms = allRooms.GetRange(0, Math.Min(5, allRooms.Count));

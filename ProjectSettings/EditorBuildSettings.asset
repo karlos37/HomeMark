@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JoinMenu.unity
     guid: 5883c37cb1197ea418e2243cddf2e80d
+  - enabled: 1
+    path: Assets/Scenes/CreateMenu.unity
+    guid: 360fe85bf2d28bb4ab3e0e7cbf086e64
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0cd91afc0add145f6b44d976793ebd0e, type: 2}
