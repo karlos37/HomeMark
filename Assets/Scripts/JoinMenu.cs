@@ -94,6 +94,50 @@ public class JoinMenu : MonoBehaviour
 
 		rooms = searchRooms.GetRange(0, Math.Min(5, searchRooms.Count));
 		SetupRooms();
+		UpdateTransitions();
+	}
+
+	void UpdateTransitions()
+	{
+		for (int i = 0; i < rooms.Count; i++)
+		{
+			Debug.Log(joinMenuTransform.Find(rooms[i].name).gameObject.name);
+			Navigation nav = joinMenuTransform.Find(rooms[i].name).GetChild(1).gameObject.GetComponent<Button>().navigation;
+			if (i == 0)
+			{
+				nav.selectOnLeft = search;
+			}
+			else
+			{
+				nav.selectOnLeft = joinMenuTransform.Find(rooms[i - 1].name).GetChild(1).gameObject.GetComponent<Button>();
+			}
+			if (i < rooms.Count - 1)
+			{
+				nav.selectOnRight = joinMenuTransform.Find(rooms[i + 1].name).GetChild(1).gameObject.GetComponent<Button>();
+			}
+			else
+			{
+				nav.selectOnRight = joinMenuTransform.Find("BackButton").gameObject.GetComponent<Button>();
+			}
+			joinMenuTransform.Find(rooms[i].name).GetChild(1).gameObject.GetComponent<Button>().navigation = nav;
+		}
+
+		Navigation nav1 = search.navigation;
+		Navigation nav2 = joinMenuTransform.Find("BackButton").gameObject.GetComponent<Button>().navigation;
+		if (rooms.Count > 0)
+		{
+			nav1.selectOnRight = joinMenuTransform.Find(rooms[0].name).GetChild(1).gameObject.GetComponent<Button>();
+
+			nav2.selectOnLeft = joinMenuTransform.Find(rooms[rooms.Count - 1].name).GetChild(1).gameObject.GetComponent<Button>();
+		}
+		else
+		{
+			nav1.selectOnRight = joinMenuTransform.Find("BackButton").gameObject.GetComponent<Button>();
+
+			nav2.selectOnLeft = search;
+		}
+		search.navigation = nav1;
+		joinMenuTransform.Find("BackButton").gameObject.GetComponent<Button>().navigation = nav2;
 	}
 
 	void SetupRooms()

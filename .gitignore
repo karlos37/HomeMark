@@ -51,6 +51,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -76,3 +77,12 @@ git-ssh
 git-ssh.pub
 
 *_BackUpThisFolder_*
+
+# OS generated files #
+######################
+**/.DS_Store
+
+# Build Settings
+/ProjectSettings/EditorBuildSettings.asset
+/ProjectSettings/ProjectSettings.asset
+/ProjectSettings/TimelineSettings.asset

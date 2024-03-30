@@ -37,7 +37,14 @@ public class KeyboardScript : MonoBehaviour
         if (textInput.name == "Search")
         {
 			EventSystem.current.SetSelectedGameObject(null);
-			EventSystem.current.SetSelectedGameObject(menuTransform.GetChild(1).Find("Button1").gameObject);
+            if (menuTransform.GetChild(1).gameObject.activeSelf)
+            {
+				EventSystem.current.SetSelectedGameObject(menuTransform.GetChild(1).Find("Button1").gameObject);
+			}
+			else
+            {
+				EventSystem.current.SetSelectedGameObject(menuTransform.Find("BackButton").gameObject);
+			}
 		}
         else if (textInput.name == "RoomInput")
         {
