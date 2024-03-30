@@ -27,7 +27,6 @@ public class CreateMenu : MonoBehaviour
 
 	private GameObject placeholder;
 	private TMP_InputField inputField;
-	private GameObject inputText;
 
 	// Start is called before the first frame update
 	void Start()
@@ -50,7 +49,6 @@ public class CreateMenu : MonoBehaviour
 
 		placeholder = createMenuTransform.Find("RoomInput").GetChild(0).Find("Placeholder").gameObject;
 		inputField = createMenuTransform.Find("RoomInput").gameObject.GetComponent<TMP_InputField>();
-		inputText = createMenuTransform.Find("RoomInput").GetChild(0).Find("Text").gameObject;
 	}
 
 	// Update is called once per frame
@@ -72,7 +70,7 @@ public class CreateMenu : MonoBehaviour
 
 	void NavigateMenu()
 	{
-		if (Input.GetKeyDown("m"))
+		if (Input.GetButtonDown("js1"))
 		{
 			if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Name")
 			{
@@ -105,10 +103,9 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (EventSystem.current.currentSelectedGameObject.name == "NextButton")
 		{
-			roomName = inputText.GetComponent<TextMeshProUGUI>().text;
+			roomName = inputField.text;
 			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Password (leave empty if public)";
 			inputField.text = "";
-			inputText.GetComponent<TextMeshProUGUI>().text = "";
 
 			EventSystem.current.SetSelectedGameObject(null);
 			EventSystem.current.SetSelectedGameObject(createMenuTransform.Find("RoomInput").gameObject);
@@ -123,7 +120,11 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (EventSystem.current.currentSelectedGameObject.name == "NextButton")
 		{
-			roomPassword = inputText.GetComponent<TextMeshProUGUI>().text;
+			roomPassword = inputField.text;
+			//if (String.IsNullOrEmpty(roomPassword))
+			//{
+			//		Room.isPublic = true;
+			//}
 			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Lighting (0-100, Default: 50)";
 		}
 		else if (EventSystem.current.currentSelectedGameObject.name == "BackButton")
@@ -131,7 +132,6 @@ public class CreateMenu : MonoBehaviour
 			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Name";
 		}
 		inputField.text = "";
-		inputText.GetComponent<TextMeshProUGUI>().text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(createMenuTransform.Find("RoomInput").gameObject);
 	}
@@ -140,13 +140,14 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (EventSystem.current.currentSelectedGameObject.name == "NextButton")
 		{
-			if (inputText.GetComponent<TextMeshProUGUI>().text == "")
+			if (String.IsNullOrEmpty(inputField.text))
 			{
 				roomLighting = 50f;
 			}
 			else
 			{
-				roomLighting = float.Parse(inputText.GetComponent<TextMeshProUGUI>().text);
+				Debug.Log(inputField.text);
+				roomLighting = float.Parse(inputField.text);
 			}
 			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Volume (0-100, Default: 50)";
 		}
@@ -155,7 +156,6 @@ public class CreateMenu : MonoBehaviour
 			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Password (leave empty if public)";
 		}
 		inputField.text = "";
-		inputText.GetComponent<TextMeshProUGUI>().text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(createMenuTransform.Find("RoomInput").gameObject);
 	}
@@ -164,13 +164,13 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (EventSystem.current.currentSelectedGameObject.name == "NextButton")
 		{
-			if (inputText.GetComponent<TextMeshProUGUI>().text == "")
+			if (String.IsNullOrEmpty(inputField.text))
 			{
 				roomVolume = 50f;
 			}
 			else
 			{
-				roomVolume = float.Parse(inputText.GetComponent<TextMeshProUGUI>().text);
+				roomVolume = float.Parse(inputField.text);
 			}
 			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Background (default, mountains, or night)";
 		}
@@ -179,7 +179,6 @@ public class CreateMenu : MonoBehaviour
 			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Lighting (0-100, Default: 50)";
 		}
 		inputField.text = "";
-		inputText.GetComponent<TextMeshProUGUI>().text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(createMenuTransform.Find("RoomInput").gameObject);
 	}
@@ -188,7 +187,7 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (EventSystem.current.currentSelectedGameObject.name == "NextButton")
 		{
-			roomBackground = inputText.GetComponent<TextMeshProUGUI>().text;
+			roomBackground = inputField.text;
 			placeholder.GetComponent<TextMeshProUGUI>().text = "Select Movie: Random text for now";
 		}
 		else if (EventSystem.current.currentSelectedGameObject.name == "BackButton")
@@ -196,7 +195,6 @@ public class CreateMenu : MonoBehaviour
 			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Volume (0-100, Default: 50)";
 		}
 		inputField.text = "";
-		inputText.GetComponent<TextMeshProUGUI>().text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(createMenuTransform.Find("RoomInput").gameObject);
 	}
@@ -205,7 +203,7 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (EventSystem.current.currentSelectedGameObject.name == "NextButton")
 		{
-			roomMovie = inputText.GetComponent<TextMeshProUGUI>().text;
+			roomMovie = inputField.text;
 			//Create/Store Room
 			//SceneManager.LoadScene("Theater");
 		}
@@ -213,7 +211,6 @@ public class CreateMenu : MonoBehaviour
 		{
 			placeholder.GetComponent<TextMeshProUGUI>().text = "Select Movie: Random text for now";
 			inputField.text = "";
-			inputText.GetComponent<TextMeshProUGUI>().text = "";
 			EventSystem.current.SetSelectedGameObject(null);
 			EventSystem.current.SetSelectedGameObject(createMenuTransform.Find("RoomInput").gameObject);
 		}

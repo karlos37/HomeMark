@@ -76,6 +76,14 @@ public class JoinMenu : MonoBehaviour
 		{
 			Search();
 		}
+
+		if (Input.GetButtonDown("js1"))
+		{
+			if (EventSystem.current.currentSelectedGameObject.name == "BackButton")
+			{
+				SceneManager.LoadScene("MainMenu");
+			}
+		}
 	}
 
 	void Search()
