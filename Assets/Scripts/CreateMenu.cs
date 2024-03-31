@@ -205,7 +205,7 @@ public class CreateMenu : MonoBehaviour
 		{
 			roomMovie = inputField.text;
 			//Create/Store Room
-			//SceneManager.LoadScene("Theater");
+			SceneManager.LoadScene("Theater");
 		}
 		else if (EventSystem.current.currentSelectedGameObject.name == "BackButton")
 		{

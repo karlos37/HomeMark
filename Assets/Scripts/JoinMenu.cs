@@ -23,6 +23,7 @@ public class JoinMenu : MonoBehaviour
 	private string searchText;
 	private List<Room> rooms;
 	private List<Room> allRooms;
+	private List<string> buttonNames;
 
 	// Start is called before the first frame update
 	void Start()
@@ -55,6 +56,13 @@ public class JoinMenu : MonoBehaviour
 
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(joinMenuTransform.Find(rooms[0].name).Find("Button1").gameObject);
+
+		buttonNames = new List<string>();
+		buttonNames.Add("Button1");
+		buttonNames.Add("Button2");
+		buttonNames.Add("Button3");
+		buttonNames.Add("Button4");
+		buttonNames.Add("Button5");
 	}
 
     // Update is called once per frame
@@ -82,6 +90,10 @@ public class JoinMenu : MonoBehaviour
 			if (EventSystem.current.currentSelectedGameObject.name == "BackButton")
 			{
 				SceneManager.LoadScene("MainMenu");
+			}
+			if (buttonNames.Contains(EventSystem.current.currentSelectedGameObject.name))
+			{
+				SceneManager.LoadScene("Theater");
 			}
 		}
 	}
