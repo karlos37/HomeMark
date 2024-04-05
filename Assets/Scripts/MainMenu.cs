@@ -39,21 +39,15 @@ public class MainMenu : MonoBehaviour
 			EventSystem.current.SetSelectedGameObject(null);
 			EventSystem.current.SetSelectedGameObject(transform.Find("IntroPanel").Find("Create Room Button").gameObject);
 		}
-		navigateMainMenu();
 	}
 
-    void navigateMainMenu()
+    public void gotoJoinMenu()
     {
-		if (Input.GetButtonDown("js1"))
-		{
-			if (EventSystem.current.currentSelectedGameObject == transform.Find("IntroPanel").Find("Join Room Button").gameObject)
-			{
-				SceneManager.LoadScene("JoinMenu");
-			}
-			else if (EventSystem.current.currentSelectedGameObject == transform.Find("IntroPanel").Find("Create Room Button").gameObject)
-			{
-				SceneManager.LoadScene("CreateMenu");
-			}
-		}
+		SceneManager.LoadScene("JoinMenu");
+	}
+
+	public void gotoCreateMenu()
+	{
+		SceneManager.LoadScene("CreateMenu");
 	}
 }
