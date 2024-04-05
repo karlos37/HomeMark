@@ -11,6 +11,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [Space]
     public Transform spawnPoint;
 
+    [Space]
+    public GameObject roomCam;
+
+    public string roomNameToJoin = "test";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +39,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Debug.Log("We are in the lobby.");
 
-        PhotonNetwork.JoinOrCreateRoom("test", null, null);
+        PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, null, null);
+    }
+
+    //THIS FUNCTION WE TIE TO THE FINAL "NEXT" BUTTON IN THE CREATE ROOM SCREEN (WE THEN GET RID OF TOP TWO FUNCTIONS)
+    public void JoinRoomButtonPressed()
+    {
+        Debug.Log("Connecting...");
+
+        PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, null, null);
     }
 
     public override void OnJoinedRoom()
@@ -42,6 +55,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
 
         Debug.Log("We are connected and in a room now.");
+
+        roomCam.SetActive(false);
 
         GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
 
