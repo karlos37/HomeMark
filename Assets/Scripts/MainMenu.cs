@@ -7,10 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-	[SerializeField] private XRCardboardInputModule vrInputModule;
-	[SerializeField] private StandaloneInputModuleCopy standardInputModuleCopy;
-	[SerializeField] private GameObject eventSystemObject;
+	//[SerializeField] private XRCardboardInputModule vrInputModule;
+	//[SerializeField] private StandaloneInputModuleCopy standardInputModuleCopy;
 
 	public GameObject CreateScreen;
 	public GameObject JoinScreen;
@@ -18,51 +16,34 @@ public class MainMenu : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		eventSystemObject.SetActive(false);
-		eventSystemObject.SetActive(true);
-
-		standardInputModuleCopy.enabled = true;
-		vrInputModule.enabled = false;
-
 		EventSystem.current.SetSelectedGameObject(null);
-		EventSystem.current.SetSelectedGameObject(transform.Find("IntroPanel").Find("Create Room Button").gameObject);
+		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("IntroPanel").Find("Create Room Button").gameObject);
+
+		//standardInputModuleCopy.enabled = true;
+		//vrInputModule.enabled = false;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-		if (vrInputModule.enabled)
-		{
-			eventSystemObject.SetActive(false);
-			eventSystemObject.SetActive(true);
-
-			standardInputModuleCopy.enabled = true;
-			vrInputModule.enabled = false;
-
-			EventSystem.current.SetSelectedGameObject(null);
-			EventSystem.current.SetSelectedGameObject(transform.Find("IntroPanel").Find("Create Room Button").gameObject);
-		}
-		navigateMainMenu();
-	}
-
-	void navigateMainMenu()
+	void Update()
 	{
-		if (Input.GetButtonDown("js1"))
-		{
-			if (EventSystem.current.currentSelectedGameObject.name == "Join Room Button")
-			{
-                //SceneManager.LoadScene("JoinMenu");
-                JoinScreen.SetActive(true);
-                gameObject.SetActive(false); //disable main menu screen
+		//if (vrInputModule.enabled)
+		//{
+			//standardInputModuleCopy.enabled = true;
+			//vrInputModule.enabled = false;
+		//}
+	}
 
-            }
-			else if (EventSystem.current.currentSelectedGameObject.name == "Create Room Button")
-			{
-                //SceneManager.LoadScene("CreateMenu");
-                CreateScreen.SetActive(true);
-                gameObject.SetActive(false); // disable main menu screen
-            }
-		}
+	public void goToCreateMenu()
+	{
+		CreateScreen.SetActive(true);
+		EventSystem.current.SetSelectedGameObject(null);
+		EventSystem.current.SetSelectedGameObject(CreateScreen.transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
+		gameObject.SetActive(false);
+	}
+
+	public void goToJoinMenu()
+	{
+		JoinScreen.SetActive(true);
+		gameObject.SetActive(false);
 	}
 
 }

@@ -12,6 +12,17 @@ public struct Room
 	public float volume { get; set; }
 	public string background { get; set; }
 
+	public Room(bool defaultVal)
+	{
+		this.name = "";
+		this.isPublic = false;
+		this.password = "";
+		this.movie = "";
+		this.lighting = 50f;
+		this.volume = 50f;
+		this.background = "";
+	}
+
 	public Room(string name, bool isPublic, string password, string movie, float lighting, float volume, string background)
 	{
 		this.name = name;
