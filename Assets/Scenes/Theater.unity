@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &141648382 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7672762429618817645, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
-  m_PrefabInstance: {fileID: 162397167}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7574bd51ab1a694885562263f2cba84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &162397167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,7 +149,7 @@ PrefabInstance:
     - target: {fileID: 2011570967481404005, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 141648382}
+      objectReference: {fileID: 193027479}
     - target: {fileID: 2011570967481404005, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseVideo
@@ -184,7 +173,7 @@ PrefabInstance:
     - target: {fileID: 2011570967702515906, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 141648382}
+      objectReference: {fileID: 193027479}
     - target: {fileID: 2011570967702515906, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayVideo
@@ -243,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3345220585188412083, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 3345220585668811684, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -891,6 +880,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
+--- !u!114 &193027479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7672762429618817645, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
+  m_PrefabInstance: {fileID: 162397167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7574bd51ab1a694885562263f2cba84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
