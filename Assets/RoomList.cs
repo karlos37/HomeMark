@@ -93,11 +93,11 @@ public class RoomList : MonoBehaviourPunCallbacks
         {
             GameObject roomItem = Instantiate(roomListItemPrefab, roomListParent);
 
-            roomItem.transform.GetChild(0).GetComponent<TextMeshPro>().text = room.Name; 
+            roomItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = room.Name; 
 
-            roomItem.transform.GetChild(1).GetComponent<TextMeshPro>().text = "Movie Name";
+            roomItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Movie Name";
 
-            roomItem.transform.GetChild(2).GetComponent<TextMeshPro>().text = room.PlayerCount + "/16"; //bc 16 is max room size in photon
+            roomItem.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = room.PlayerCount + "/16"; //bc 16 is max room size in photon
 
             roomItem.GetComponent<RoomItemButton>().RoomName = room.Name;
         }
