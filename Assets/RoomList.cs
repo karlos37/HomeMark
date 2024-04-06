@@ -99,16 +99,18 @@ public class RoomList : MonoBehaviourPunCallbacks
 
             roomItem.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = room.PlayerCount + "/16"; //bc 16 is max room size in photon
 
-            roomItem.GetComponent<RoomItemButton>().RoomName = room.Name;
+            roomItem.GetComponent<RoomItemButton>().RoomName = room.Name; //Give the room name that we will try joining
         }
     }
 
     public void JoinRoomByName(string _name)
     {
         roomManager.roomNameToJoin = _name;
-
         roomManagerGameobject.SetActive(true);
 
+        roomManager.JoinRoomButtonPressed(); //calls to join room with the room name we already set should technically do this but meh
+
         gameObject.SetActive(false);
+
     }
 }
