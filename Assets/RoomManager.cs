@@ -2,64 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
+using Photon.Realtime;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public GameObject player;
-
-    [Space]
     public Transform spawnPoint;
-
-    [Space]
     public GameObject roomCam;
-
+    public GameObject menuCharacter;
     public string roomNameToJoin = "test";
 
-    // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Connecting...");
-
+        // Ensure PhotonNetwork is properly initialized
         PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public void JoinRoomButtonPressed()
+    {
+        Debug.Log("Joining room...");
+        // Check if PhotonNetwork is connected to the master server before joining or creating a room
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, null, null);
+        }
+        else
+        {
+            Debug.Log("PhotonNetwork is not connected to the master server.");
+        }
     }
 
     public override void OnConnectedToMaster()
     {
-        base.OnConnectedToMaster();
-
-        Debug.Log("Connected to Server");
-
-        PhotonNetwork.JoinLobby();
-    }
-
-    public override void OnJoinedLobby()
-    {
-        base.OnJoinedLobby();
-
-        Debug.Log("We are in the lobby.");
-
-        PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, null, null);
-    }
-
-    //THIS FUNCTION WE TIE TO THE FINAL "NEXT" BUTTON IN THE CREATE ROOM SCREEN (WE THEN GET RID OF TOP TWO FUNCTIONS)
-    public void JoinRoomButtonPressed()
-    {
-        Debug.Log("Connecting...");
-
-        PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, null, null);
+        Debug.Log("Connected to master server.");
+        // After connecting to the master server, join or create the room
+        JoinRoomButtonPressed();
     }
 
     public override void OnJoinedRoom()
     {
-        base.OnJoinedRoom();
-
-        Debug.Log("We are connected and in a room now.");
-
+        Debug.Log("Joined room successfully.");
+        // Disable room camera and menu character
         roomCam.SetActive(false);
-
+        menuCharacter.SetActive(false);
+        // Instantiate player at spawn point
         GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
-
         _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+    }
+
+    // Handle case when joining room fails
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.LogError("Failed to join room: " + message);
     }
 }

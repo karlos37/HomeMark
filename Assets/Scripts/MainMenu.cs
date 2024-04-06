@@ -12,6 +12,9 @@ public class MainMenu : MonoBehaviour
 	[SerializeField] private StandaloneInputModuleCopy standardInputModuleCopy;
 	[SerializeField] private GameObject eventSystemObject;
 
+	public GameObject CreateScreen;
+	public GameObject JoinScreen;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -42,18 +45,24 @@ public class MainMenu : MonoBehaviour
 		navigateMainMenu();
 	}
 
-    void navigateMainMenu()
-    {
+	void navigateMainMenu()
+	{
 		if (Input.GetButtonDown("js1"))
 		{
-			if (EventSystem.current.currentSelectedGameObject == transform.Find("IntroPanel").Find("Join Room Button").gameObject)
+			if (EventSystem.current.currentSelectedGameObject.name == "Join Room Button")
 			{
-				SceneManager.LoadScene("JoinMenu");
-			}
-			else if (EventSystem.current.currentSelectedGameObject == transform.Find("IntroPanel").Find("Create Room Button").gameObject)
+                //SceneManager.LoadScene("JoinMenu");
+                JoinScreen.SetActive(true);
+                gameObject.SetActive(false); //disable main menu screen
+
+            }
+			else if (EventSystem.current.currentSelectedGameObject.name == "Create Room Button")
 			{
-				SceneManager.LoadScene("CreateMenu");
-			}
+                //SceneManager.LoadScene("CreateMenu");
+                CreateScreen.SetActive(true);
+                gameObject.SetActive(false); // disable main menu screen
+            }
 		}
 	}
+
 }

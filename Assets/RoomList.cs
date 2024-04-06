@@ -17,6 +17,11 @@ public class RoomList : MonoBehaviourPunCallbacks
 
     private List<RoomInfo> cachedRoomList = new List<RoomInfo>();
 
+    public void ChangeRoomToCreateName(string _roomName)
+    {
+        roomManager.roomNameToJoin = _roomName;
+    }
+
     private void Awake()
     {
         instance = this;
@@ -103,5 +108,7 @@ public class RoomList : MonoBehaviourPunCallbacks
         roomManager.roomNameToJoin = _name;
 
         roomManagerGameobject.SetActive(true);
+
+        gameObject.SetActive(false);
     }
 }

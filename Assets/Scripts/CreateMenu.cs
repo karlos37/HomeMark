@@ -28,6 +28,11 @@ public class CreateMenu : MonoBehaviour
 	private GameObject placeholder;
 	private TMP_InputField inputField;
 
+	public GameObject GameMenu;
+	public GameObject RoomManager;
+	public RoomList roomList;
+	public RoomManager roomManager;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -112,7 +117,7 @@ public class CreateMenu : MonoBehaviour
 		}
 		else if (EventSystem.current.currentSelectedGameObject.name == "BackButton")
 		{
-			SceneManager.LoadScene("MainMenu");
+			//SceneManager.LoadScene("MainMenu");
 		}
 	}
 
@@ -205,7 +210,11 @@ public class CreateMenu : MonoBehaviour
 		{
 			roomMovie = inputField.text;
 			//Create/Store Room
-			SceneManager.LoadScene("Theater");
+			//SceneManager.LoadScene("Theater");
+
+			//CREATES THE ROOM
+			CreateRoom();
+			gameObject.SetActive(false); //hides the create menu
 		}
 		else if (EventSystem.current.currentSelectedGameObject.name == "BackButton")
 		{
@@ -215,4 +224,14 @@ public class CreateMenu : MonoBehaviour
 			EventSystem.current.SetSelectedGameObject(createMenuTransform.Find("RoomInput").gameObject);
 		}
 	}
+
+	void CreateRoom()
+	{
+        //ENABLE THE ROOM MANAGER
+        RoomManager.SetActive(true);
+
+        //CREATE THE ROOM BY SENDING THE NAME, YOU CAN SEND OTHER THINGS HERE TOO, BUT YOU MUST CREATE RECEIVING FUNCTIONS IN OTHER SCRIPTS TOO
+        roomList.ChangeRoomToCreateName(roomName);
+        roomManager.JoinRoomButtonPressed();
+    }
 }
