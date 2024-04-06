@@ -15,12 +15,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     void Start()
     {
         // Ensure PhotonNetwork is properly initialized
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     public void JoinRoomButtonPressed()
     {
-        Debug.Log("Joining room...");
+        Debug.Log("Connecting...");
         // Check if PhotonNetwork is connected to the master server before joining or creating a room
         if (PhotonNetwork.IsConnected)
         {
@@ -29,6 +32,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         else
         {
             Debug.Log("PhotonNetwork is not connected to the master server.");
+            PhotonNetwork.ConnectUsingSettings();
         }
     }
 
