@@ -6,11 +6,18 @@ using Photon.Realtime;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
+    public static RoomManager Instance;
+
     public GameObject player;
     public Transform spawnPoint;
     public GameObject roomCam;
     public GameObject menuCharacter;
     public string roomNameToJoin = "test";
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
