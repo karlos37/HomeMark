@@ -12,12 +12,16 @@ public class MainMenu : MonoBehaviour
 
 	public GameObject CreateScreen;
 	public GameObject JoinScreen;
+	public GameObject Character;
 
 	// Start is called before the first frame update
 	void Start()
     {
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("IntroPanel").Find("Create Room Button").gameObject);
+
+		Character.GetComponent<CharacterController>().enabled = false;
+		Character.GetComponent<CharacterMovement>().enabled = false;
 
 		//standardInputModuleCopy.enabled = true;
 		//vrInputModule.enabled = false;

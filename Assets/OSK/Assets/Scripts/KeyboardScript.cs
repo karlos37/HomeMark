@@ -8,7 +8,7 @@ using TMPro;
 public class KeyboardScript : MonoBehaviour
 {
     public TMP_InputField TextField;
-    public GameObject EngLayoutSml, SymbLayout;
+    public GameObject EngLayoutSml;
 
 	[SerializeField] private Transform menuTransform;
 	[SerializeField] private GameObject textInput;
@@ -32,32 +32,16 @@ public class KeyboardScript : MonoBehaviour
     {
 
 		EngLayoutSml.SetActive(false);
-        SymbLayout.SetActive(false);
 
-        if (textInput.name == "Search")
-        {
-			EventSystem.current.SetSelectedGameObject(null);
-            if (menuTransform.GetChild(1).gameObject.activeSelf)
-            {
-				EventSystem.current.SetSelectedGameObject(menuTransform.GetChild(1).Find("Button1").gameObject);
-			}
-			else
-            {
-				EventSystem.current.SetSelectedGameObject(menuTransform.Find("BackButton").gameObject);
-			}
-		}
-        else if (textInput.name == "RoomInput")
-        {
-			EventSystem.current.SetSelectedGameObject(null);
-			EventSystem.current.SetSelectedGameObject(menuTransform.GetChild(1).gameObject);
-		}
+		EventSystem.current.SetSelectedGameObject(null);
+		EventSystem.current.SetSelectedGameObject(menuTransform.Find("NextButton").gameObject);
+
 	}
 
     public void ShowLayout(GameObject SetLayout)
     {
 
 		EngLayoutSml.SetActive(false);
-		SymbLayout.SetActive(false);
 		SetLayout.SetActive(true);
     }
 
