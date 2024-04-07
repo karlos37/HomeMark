@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 445389682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97df4619071e24547a5d7d5b0edc3967, type: 3}
+  m_Script: {fileID: 11500000, guid: 2250909a57bed7c4cbfbfe68dba3ba56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2207157971795013094, guid: 1efcb5b0148fa954bbe9f4b2fdc04997, type: 3}
@@ -7795,7 +7795,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 994359927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0469e90d3773d46808382c1f9d9f60, type: 3}
+  m_Script: {fileID: 11500000, guid: f65e10bc85596624bb32b161a07e4857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roomManagerGameobject: {fileID: 445389682}
@@ -14455,7 +14455,7 @@ PrefabInstance:
     - target: {fileID: 1570341874880561921, guid: 1ffb4487ee2474a4fa71a12ef4473fec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2084830991}
+      objectReference: {fileID: 0}
     - target: {fileID: 1570341874880561921, guid: 1ffb4487ee2474a4fa71a12ef4473fec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnButtonPressed
@@ -14470,7 +14470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1570341874880561926, guid: 1ffb4487ee2474a4fa71a12ef4473fec, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1570341874880561926, guid: 1ffb4487ee2474a4fa71a12ef4473fec, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14556,21 +14556,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1570341874880561926, guid: 1ffb4487ee2474a4fa71a12ef4473fec, type: 3}
   m_PrefabInstance: {fileID: 2084830988}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2084830990 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1570341874880561927, guid: 1ffb4487ee2474a4fa71a12ef4473fec, type: 3}
-  m_PrefabInstance: {fileID: 2084830988}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2084830991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084830990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eabcf9fe80b9d04ea2253b2f697ea1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RoomName: test
