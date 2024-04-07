@@ -7,7 +7,7 @@ public class MenuCharacterMenuController : MonoBehaviour
     private CharacterMovement characterMovement;
 
     private GameObject menu;
-    private float menuDistFromUser = 2.0f;
+    private float menuDistFromUser = 1.0f;
     private bool menuActive = false;
 
     public GameObject[] buttons;
