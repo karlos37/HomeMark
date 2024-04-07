@@ -1052,23 +1052,23 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: dee7c7efce49f4e82b6af5613ed9ba4b, type: 2}
     - target: {fileID: 6052727295745127700, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6052727295745127700, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6052727296278981972, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6052727296278981972, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6052727296278981972, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683800366503868593, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_RootOrder
@@ -1120,7 +1120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6736746887489160752, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6757341449860479686, guid: 830fea178395a4b499bb134dec75d9df, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3357,7 +3357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 676888985}
   - component: {fileID: 676888984}
-  - component: {fileID: 676888983}
+  - component: {fileID: 676888986}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3365,26 +3365,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &676888983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676888982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &676888984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3415,6 +3395,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &676888986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676888982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bd3c71695c3c6429e30208d6581803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &694355319
 GameObject:
   m_ObjectHideFlags: 0
@@ -4732,11 +4732,11 @@ PrefabInstance:
     - target: {fileID: 2452114809917198415, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128788}
+      objectReference: {fileID: 929128794}
     - target: {fileID: 2452114809917198415, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128794}
+      objectReference: {fileID: 929128788}
     - target: {fileID: 2452114809917198415, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -4752,11 +4752,11 @@ PrefabInstance:
     - target: {fileID: 2452114809948099120, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128785}
+      objectReference: {fileID: 929128789}
     - target: {fileID: 2452114809948099120, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128789}
+      objectReference: {fileID: 929128785}
     - target: {fileID: 2452114809948099120, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -4778,7 +4778,7 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810000560870, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
+      propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 929128781}
     - target: {fileID: 2452114810000560870, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
@@ -4796,11 +4796,11 @@ PrefabInstance:
     - target: {fileID: 2452114810013368873, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128802}
+      objectReference: {fileID: 929128800}
     - target: {fileID: 2452114810013368873, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128800}
+      objectReference: {fileID: 929128802}
     - target: {fileID: 2452114810013368873, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -4830,7 +4830,7 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810023538603, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
+      propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 929128779}
     - target: {fileID: 2452114810023538603, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
@@ -4880,11 +4880,11 @@ PrefabInstance:
     - target: {fileID: 2452114810103693992, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128806}
+      objectReference: {fileID: 929128803}
     - target: {fileID: 2452114810103693992, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128803}
+      objectReference: {fileID: 929128806}
     - target: {fileID: 2452114810103693992, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -4912,11 +4912,11 @@ PrefabInstance:
     - target: {fileID: 2452114810108231890, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128786}
+      objectReference: {fileID: 929128788}
     - target: {fileID: 2452114810108231890, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128788}
+      objectReference: {fileID: 929128786}
     - target: {fileID: 2452114810108231890, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -4938,21 +4938,13 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 929128794}
-    - target: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128796}
+      objectReference: {fileID: 929128794}
     - target: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 929128797}
-    - target: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 929128796}
     - target: {fileID: 2452114810120236126, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -5044,11 +5036,11 @@ PrefabInstance:
     - target: {fileID: 2452114810281716728, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128783}
+      objectReference: {fileID: 929128804}
     - target: {fileID: 2452114810281716728, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128804}
+      objectReference: {fileID: 929128783}
     - target: {fileID: 2452114810281716728, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
@@ -5072,11 +5064,11 @@ PrefabInstance:
     - target: {fileID: 2452114810311308454, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128808}
+      objectReference: {fileID: 929128801}
     - target: {fileID: 2452114810311308454, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128801}
+      objectReference: {fileID: 929128808}
     - target: {fileID: 2452114810311308454, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -5136,11 +5128,11 @@ PrefabInstance:
     - target: {fileID: 2452114810362844313, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128790}
+      objectReference: {fileID: 929128792}
     - target: {fileID: 2452114810362844313, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128792}
+      objectReference: {fileID: 929128790}
     - target: {fileID: 2452114810362844313, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -5252,11 +5244,11 @@ PrefabInstance:
     - target: {fileID: 2452114810499556193, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128800}
+      objectReference: {fileID: 929128795}
     - target: {fileID: 2452114810499556193, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128795}
+      objectReference: {fileID: 929128800}
     - target: {fileID: 2452114810499556193, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -5326,7 +5318,7 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810540688065, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
+      propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 929128808}
     - target: {fileID: 2452114810540688065, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
@@ -5376,11 +5368,11 @@ PrefabInstance:
     - target: {fileID: 2452114810558433067, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128781}
+      objectReference: {fileID: 929128783}
     - target: {fileID: 2452114810558433067, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128783}
+      objectReference: {fileID: 929128781}
     - target: {fileID: 2452114810558433067, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
@@ -5396,11 +5388,11 @@ PrefabInstance:
     - target: {fileID: 2452114810601880003, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128804}
+      objectReference: {fileID: 929128791}
     - target: {fileID: 2452114810601880003, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128791}
+      objectReference: {fileID: 929128804}
     - target: {fileID: 2452114810601880003, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
@@ -5416,11 +5408,11 @@ PrefabInstance:
     - target: {fileID: 2452114810609533444, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128803}
+      objectReference: {fileID: 929128799}
     - target: {fileID: 2452114810609533444, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128799}
+      objectReference: {fileID: 929128803}
     - target: {fileID: 2452114810609533444, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -5440,11 +5432,11 @@ PrefabInstance:
     - target: {fileID: 2452114810615885986, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128777}
+      objectReference: {fileID: 929128787}
     - target: {fileID: 2452114810615885986, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128787}
+      objectReference: {fileID: 929128777}
     - target: {fileID: 2452114810615885986, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -5500,11 +5492,11 @@ PrefabInstance:
     - target: {fileID: 2452114810672622238, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128784}
+      objectReference: {fileID: 929128790}
     - target: {fileID: 2452114810672622238, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128790}
+      objectReference: {fileID: 929128784}
     - target: {fileID: 2452114810672622238, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
@@ -5520,11 +5512,11 @@ PrefabInstance:
     - target: {fileID: 2452114810676502851, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128780}
+      objectReference: {fileID: 929128784}
     - target: {fileID: 2452114810676502851, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128784}
+      objectReference: {fileID: 929128780}
     - target: {fileID: 2452114810676502851, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
@@ -5540,11 +5532,11 @@ PrefabInstance:
     - target: {fileID: 2452114810678550684, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128779}
+      objectReference: {fileID: 929128785}
     - target: {fileID: 2452114810678550684, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128785}
+      objectReference: {fileID: 929128779}
     - target: {fileID: 2452114810678550684, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -5630,7 +5622,7 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810811409236, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
+      propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 929128807}
     - target: {fileID: 2452114810811409236, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
@@ -5684,11 +5676,11 @@ PrefabInstance:
     - target: {fileID: 2452114810859667864, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128799}
+      objectReference: {fileID: 929128797}
     - target: {fileID: 2452114810859667864, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128797}
+      objectReference: {fileID: 929128799}
     - target: {fileID: 2452114810859667864, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -5710,7 +5702,7 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810911408662, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
+      propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 929128793}
     - target: {fileID: 2452114810911408662, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
@@ -5820,11 +5812,11 @@ PrefabInstance:
     - target: {fileID: 2452114811104774627, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128778}
+      objectReference: {fileID: 929128786}
     - target: {fileID: 2452114811104774627, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128786}
+      objectReference: {fileID: 929128778}
     - target: {fileID: 2452114811104774627, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -6152,11 +6144,11 @@ PrefabInstance:
     - target: {fileID: 2452114811419552874, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128807}
+      objectReference: {fileID: 929128802}
     - target: {fileID: 2452114811419552874, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128802}
+      objectReference: {fileID: 929128807}
     - target: {fileID: 2452114811419552874, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -6176,11 +6168,11 @@ PrefabInstance:
     - target: {fileID: 2452114811432023642, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128789}
+      objectReference: {fileID: 929128793}
     - target: {fileID: 2452114811432023642, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128793}
+      objectReference: {fileID: 929128789}
     - target: {fileID: 2452114811432023642, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -6316,11 +6308,11 @@ PrefabInstance:
     - target: {fileID: 2452114811488703601, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128782}
+      objectReference: {fileID: 929128780}
     - target: {fileID: 2452114811488703601, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128780}
+      objectReference: {fileID: 929128782}
     - target: {fileID: 2452114811488703601, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
@@ -6388,11 +6380,11 @@ PrefabInstance:
     - target: {fileID: 2452114811572645195, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128805}
+      objectReference: {fileID: 929128806}
     - target: {fileID: 2452114811572645195, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128806}
+      objectReference: {fileID: 929128805}
     - target: {fileID: 2452114811572645195, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -6430,13 +6422,9 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114811728714067, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 929128792}
-    - target: {fileID: 2452114811728714067, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 929128792}
     - target: {fileID: 2452114811728714067, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -6514,13 +6502,9 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2452114811770331459, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 929128787}
-    - target: {fileID: 2452114811770331459, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128796}
+      objectReference: {fileID: 929128787}
     - target: {fileID: 2452114811770331459, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -6604,11 +6588,11 @@ PrefabInstance:
     - target: {fileID: 2452114811972817928, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 929128791}
+      objectReference: {fileID: 929128798}
     - target: {fileID: 2452114811972817928, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 929128798}
+      objectReference: {fileID: 929128791}
     - target: {fileID: 2452114811972817928, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
@@ -6952,17 +6936,6 @@ MonoBehaviour:
 --- !u!114 &929128795 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-  m_PrefabInstance: {fileID: 929128737}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &929128796 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2452114811320571937, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
   m_PrefabInstance: {fileID: 929128737}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -9545,7 +9518,7 @@ PrefabInstance:
     - target: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 1456835210}
+      objectReference: {fileID: 0}
     - target: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -9557,7 +9530,7 @@ PrefabInstance:
     - target: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
-      objectReference: {fileID: 1456835210}
+      objectReference: {fileID: 0}
     - target: {fileID: 2452114810120236126, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -11109,7 +11082,7 @@ PrefabInstance:
     - target: {fileID: 2452114811770331459, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 1456835210}
+      objectReference: {fileID: 0}
     - target: {fileID: 2452114811770331459, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -11541,17 +11514,6 @@ MonoBehaviour:
 --- !u!114 &1456835209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2452114810120236112, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
-  m_PrefabInstance: {fileID: 1456835151}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1456835210 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2452114811320571937, guid: c216c4fb684db134c9cdf8441b831f9f, type: 3}
   m_PrefabInstance: {fileID: 1456835151}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

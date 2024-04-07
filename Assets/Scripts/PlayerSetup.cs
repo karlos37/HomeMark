@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerSetup : MonoBehaviour
 {
-    public CharacterMovement movement;
 
     public GameObject camera;
 
     public void IsLocalPlayer()
     {
-        movement.enabled = true;
+        GetComponent<CharacterController>().enabled = true;
+		GetComponent<CharacterMovement>().enabled = true;
         camera.SetActive(true);
 
     }

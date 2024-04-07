@@ -12,8 +12,6 @@ using static Room;
 
 public class CreateMenu : MonoBehaviour
 {
-	//[SerializeField] private XRCardboardInputModule vrInputModule;
-	//[SerializeField] private StandaloneInputModuleCopy standardInputModuleCopy;
 
 	private Room room;
 	private GameObject placeholder;
@@ -30,22 +28,10 @@ public class CreateMenu : MonoBehaviour
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 
-		//standardInputModuleCopy.enabled = true;
-		//vrInputModule.enabled = false;
-
 		room = new Room(true);
 
 		placeholder = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").GetChild(0).Find("Placeholder").gameObject;
 		inputField = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").gameObject.GetComponent<TMP_InputField>();
-	}
-
-	void Update()
-	{
-		//if (vrInputModule.enabled)
-		//{
-			//standardInputModuleCopy.enabled = true;
-			//vrInputModule.enabled = false;
-		//}
 	}
 
 	public void handleNextButton()

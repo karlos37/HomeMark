@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-	//[SerializeField] private XRCardboardInputModule vrInputModule;
-	//[SerializeField] private StandaloneInputModuleCopy standardInputModuleCopy;
 
 	public GameObject CreateScreen;
 	public GameObject JoinScreen;
@@ -22,18 +20,6 @@ public class MainMenu : MonoBehaviour
 
 		Character.GetComponent<CharacterController>().enabled = false;
 		Character.GetComponent<CharacterMovement>().enabled = false;
-
-		//standardInputModuleCopy.enabled = true;
-		//vrInputModule.enabled = false;
-	}
-
-	void Update()
-	{
-		//if (vrInputModule.enabled)
-		//{
-			//standardInputModuleCopy.enabled = true;
-			//vrInputModule.enabled = false;
-		//}
 	}
 
 	public void goToCreateMenu()
