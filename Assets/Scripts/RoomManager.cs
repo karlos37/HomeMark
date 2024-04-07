@@ -58,7 +58,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         menuCharacter.SetActive(false);
         // Instantiate player at spawn point
         GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
-        _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+
     }
 
     // Handle case when joining room fails

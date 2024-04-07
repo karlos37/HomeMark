@@ -42,13 +42,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2207157971795013099}
   - component: {fileID: 2207157971795013096}
-  - component: {fileID: 2207157971795013097}
   - component: {fileID: 2103859488119347908}
   - component: {fileID: 5257233902128321155}
-  - component: {fileID: 8938687282795084353}
   - component: {fileID: 4212129113634965230}
   - component: {fileID: 3453743984244514122}
   - component: {fileID: 1879361942674791736}
+  - component: {fileID: 8169546323007863885}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -81,7 +80,7 @@ CharacterController:
   m_GameObject: {fileID: 2207157971795013094}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
@@ -90,21 +89,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2207157971795013097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2207157971795013094}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc1ae413c1be9b40ade6253e39620c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  cameraObj: {fileID: 2512171585949003388}
-  joyStickMode: 1
 --- !u!114 &2103859488119347908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,19 +128,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &8938687282795084353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2207157971795013094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a34a391e78343408cf6494c826beb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 2512171585949003388}
 --- !u!33 &4212129113634965230
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -221,6 +192,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8169546323007863885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207157971795013094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03057f61f160964f91bf8e530e7c36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObj: {fileID: 2512171585949003388}
 --- !u!1 &2512171585949003388
 GameObject:
   m_ObjectHideFlags: 0
