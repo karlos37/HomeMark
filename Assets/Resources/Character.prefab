@@ -210,6 +210,7 @@ MonoBehaviour:
   cameraObj: {fileID: 2512171585949003388}
   reticle: {fileID: 8413633092252818522}
   videoPlayers: []
+  light: {fileID: 5673111888120456005}
   defaultBrightness: 1
   localLight: {fileID: 4648508551562047416}
 --- !u!114 &5900560664695735078
@@ -734,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372636579843999229, guid: 22e8957b53a382448873fdfff1869657, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1372636579843999229, guid: 22e8957b53a382448873fdfff1869657, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -890,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463779841576029875, guid: 22e8957b53a382448873fdfff1869657, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: -0.05
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4463779841576029875, guid: 22e8957b53a382448873fdfff1869657, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

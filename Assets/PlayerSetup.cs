@@ -19,6 +19,7 @@ public class PlayerSetup : MonoBehaviour
 	private PhotonView view;
 	private CharacterController charControl;
 	private MenuCharacterMenuController menuControl;
+	public GameObject light;
 
 	private float speed;
 
@@ -56,6 +57,7 @@ public class PlayerSetup : MonoBehaviour
 		{
 			RegularMove();
 			cameraObj.SetActive(true);
+			light.SetActive(true);
 			menuControl.enabled = true;
 
 			Vector3 rayStart = cameraObj.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5F, 0.5F, 0));
@@ -81,6 +83,7 @@ public class PlayerSetup : MonoBehaviour
 		{
 			SmoothMove();
 			cameraObj.SetActive(false);
+			light.SetActive(false);
 			menuControl.enabled = false;
 		}
 	}

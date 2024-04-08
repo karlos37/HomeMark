@@ -52,11 +52,11 @@ public class CreateMenu : MonoBehaviour
 		{
 			RoomVolumeOptions(true);
 		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Background (default, mountains, or night)")
+		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Background (default, mountains, night)")
 		{
 			RoomBackgroundOptions(true);
 		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Select Movie: Random text for now")
+		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Select Movie (default, demo)")
 		{
 			RoomMovieOptions(true);
 		}
@@ -80,11 +80,11 @@ public class CreateMenu : MonoBehaviour
 		{
 			RoomVolumeOptions(false);
 		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Background (default, mountains, or night)")
+		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Background (default, mountains, night)")
 		{
 			RoomBackgroundOptions(false);
 		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Select Movie: Random text for now")
+		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Select Movie (default, demo)")
 		{
 			RoomMovieOptions(false);
 		}
@@ -157,7 +157,7 @@ public class CreateMenu : MonoBehaviour
 			{
 				room.volume = float.Parse(inputField.text);
 			}
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Background (default, mountains, or night)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Background (default, mountains, night)";
 		}
 		else
 		{
@@ -173,7 +173,7 @@ public class CreateMenu : MonoBehaviour
 		if (next)
 		{
 			room.background = inputField.text;
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Select Movie: Random text for now";
+			placeholder.GetComponent<TextMeshProUGUI>().text = "Select Movie (default, demo)";
 		}
 		else
 		{
@@ -196,7 +196,7 @@ public class CreateMenu : MonoBehaviour
 		}
 		else
 		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Background (default, mountains, or night)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Background (default, mountains, night)";
 			inputField.text = "";
 			EventSystem.current.SetSelectedGameObject(null);
 			EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
