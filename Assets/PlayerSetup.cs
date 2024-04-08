@@ -26,6 +26,8 @@ public class PlayerSetup : MonoBehaviour
 
 	public Light localLight;
 
+	private RaycastHit hit;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -55,6 +57,25 @@ public class PlayerSetup : MonoBehaviour
 			RegularMove();
 			cameraObj.SetActive(true);
 			menuControl.enabled = true;
+
+			Vector3 rayStart = cameraObj.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5F, 0.5F, 0));
+			if (Physics.Raycast(rayStart, cameraObj.transform.forward, out hit, 50))
+			{
+				Debug.Log(hit.collider.gameObject.name);
+				if (Input.GetButtonDown("js2"))
+				{
+					if (hit.collider.gameObject.name == "PlayCollider")
+					{
+						Debug.Log(hit.collider.gameObject.name);
+						GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Play Button").gameObject.GetComponent<Button>().onClick.Invoke();
+					}
+					else if (hit.collider.gameObject.name == "PauseCollider")
+					{
+						Debug.Log(hit.collider.gameObject.name);
+						GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Pause Button").gameObject.GetComponent<Button>().onClick.Invoke();
+					}
+				}
+			}
 		}
 		else
 		{

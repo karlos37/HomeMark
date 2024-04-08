@@ -2637,7 +2637,7 @@ MonoBehaviour:
   player: {fileID: 2207157971795013094, guid: 5b2b47ca169436e4bad726759df6f808, type: 3}
   spawnPoint: {fileID: 289817724}
   roomCam: {fileID: 1848798107}
-  menuCharacter: {fileID: 152869406}
+  menuCharacter: {fileID: 1775171227}
   roomNameToJoin: test
 --- !u!1 &481423196
 GameObject:
