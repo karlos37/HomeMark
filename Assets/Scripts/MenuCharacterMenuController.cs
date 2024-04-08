@@ -26,7 +26,7 @@ public class MenuCharacterMenuController : MonoBehaviour
     void Update()
     {
         menu.SetActive(menuActive);
-        if (Input.GetButtonDown("js1"))
+        if (Input.GetButtonDown("js1") || Input.GetButtonDown("js5"))
         {
             Debug.Log("Menu button pressed!");;
             // spawn menu in front of user

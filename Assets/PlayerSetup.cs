@@ -67,12 +67,12 @@ public class PlayerSetup : MonoBehaviour
 					if (hit.collider.gameObject.name == "PlayCollider")
 					{
 						Debug.Log(hit.collider.gameObject.name);
-						GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Play Button").gameObject.GetComponent<Button>().onClick.Invoke();
+						view.RPC("PlayVideo", RpcTarget.All);
 					}
 					else if (hit.collider.gameObject.name == "PauseCollider")
 					{
 						Debug.Log(hit.collider.gameObject.name);
-						GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Pause Button").gameObject.GetComponent<Button>().onClick.Invoke();
+						view.RPC("PauseVideo", RpcTarget.All);
 					}
 				}
 			}
@@ -83,6 +83,18 @@ public class PlayerSetup : MonoBehaviour
 			cameraObj.SetActive(false);
 			menuControl.enabled = false;
 		}
+	}
+
+	[PunRPC]
+	public void PlayVideo()
+	{
+		GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Play Button").gameObject.GetComponent<Button>().onClick.Invoke();
+	}
+
+	[PunRPC]
+	public void PauseVideo()
+	{
+		GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Pause Button").gameObject.GetComponent<Button>().onClick.Invoke();
 	}
 
 	public void ChangeBrightness(float amt)
