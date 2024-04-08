@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -56,8 +57,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         // Disable room camera and menu character
         roomCam.SetActive(false);
         menuCharacter.SetActive(false);
-        // Instantiate player at spawn point
-        GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
+		// Instantiate player at spawn point
+		GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
 
     }
 

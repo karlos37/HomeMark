@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class RoomList : MonoBehaviourPunCallbacks
 {
@@ -100,7 +101,10 @@ public class RoomList : MonoBehaviourPunCallbacks
             roomItem.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = room.PlayerCount + "/16"; //bc 16 is max room size in photon
 
             roomItem.GetComponent<RoomItemButton>().RoomName = room.Name; //Give the room name that we will try joining
-        }
+
+			EventSystem.current.SetSelectedGameObject(null);
+			EventSystem.current.SetSelectedGameObject(roomItem);
+		}
     }
 
     public void JoinRoomByName(string _name)

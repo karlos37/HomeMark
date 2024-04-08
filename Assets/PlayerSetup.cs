@@ -1,30 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Video;
 
 using Photon.Pun;
 
 public class PlayerSetup : MonoBehaviour
 {
-	private float lightingLevel;
-	private float volumeLevel;
-
 	private Vector3 TargetPosition;
 	private Quaternion TargetRotation;
 
 	public GameObject cameraObj;
+	public GameObject reticle;
+	public VideoPlayer[] videoPlayers;
+
 	private PhotonView view;
 	private CharacterController charControl;
+	private MenuCharacterMenuController menuControl;
+
 	private float speed;
+
+	public float defaultBrightness = 1f;
+
+	public Light localLight;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		lightingLevel = 50f;
-		volumeLevel = 50f;
 		view = GetComponent<PhotonView>();
 		charControl = GetComponent<CharacterController>();
+		menuControl = GetComponent<MenuCharacterMenuController>();
 		speed = 5f;
+
+		videoPlayers = FindObjectsOfType<VideoPlayer>();
+
+		localLight = FindObjectOfType<Light>();
+		if (localLight == null)
+		{
+			Debug.LogError("No Light component found in the scene!");
+		}
+		else
+		{
+			localLight.intensity = defaultBrightness;
+		}
 	}
 
 	// Update is called once per frame
@@ -34,11 +54,30 @@ public class PlayerSetup : MonoBehaviour
 		{
 			RegularMove();
 			cameraObj.SetActive(true);
+			menuControl.enabled = true;
 		}
 		else
 		{
 			SmoothMove();
 			cameraObj.SetActive(false);
+			menuControl.enabled = false;
+		}
+	}
+
+	public void ChangeBrightness(float amt)
+	{
+		// Debug.Log("<color=blue>Brightness: </color>" + localLight.intensity);
+		localLight.intensity += amt;
+	}
+
+	public void ChangeVolume(float amt)
+	{
+		foreach (var videoPlayer in videoPlayers)
+		{
+			float new_vol;
+			float cur_vol = videoPlayer.GetDirectAudioVolume(0);
+			new_vol = Mathf.Clamp(cur_vol + amt, 0, 1);
+			videoPlayer.SetDirectAudioVolume(0, new_vol);
 		}
 	}
 
@@ -85,15 +124,5 @@ public class PlayerSetup : MonoBehaviour
 	{
 		transform.position = Vector3.Lerp(transform.position, TargetPosition, 0.01f);
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500 * Time.deltaTime);
-	}
-
-	void SetLightingLevel(float lightingLevel)
-	{
-		this.lightingLevel = lightingLevel;
-	}
-
-	void SetVolumeLevel(float volumeLevel)
-	{
-		this.volumeLevel = volumeLevel;
 	}
 }

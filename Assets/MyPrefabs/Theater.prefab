@@ -2255,6 +2255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light
       objectReference: {fileID: 0}
+    - target: {fileID: 5186944528144772992, guid: 7eaadca71fab77447860a121cc907048, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5186944528144772999, guid: 7eaadca71fab77447860a121cc907048, type: 3}
       propertyPath: m_RootOrder
       value: 26
