@@ -1,6 +1,6 @@
 Instructions to start the project
 
-1. Scene to Play : Theatre.Scene (Assets/Scenes/Theatre.scene)
+1. Scene to Play : Theatre.Scene (Assets/Scenes/Theatre.unity)
 2. Target Platform : The application is targetted to work on Android phones
 3. Bluetooth controller to be used for navigation and selection(Submit button - usually mapped to Button "A")
 
