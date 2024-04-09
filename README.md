@@ -15,12 +15,12 @@ Instructions to start the project
 2. You will see a list a rooms you can enter. Select the room you want to join.
 
 ## System Controls
-1. Press Button "joystick button 1" to open settings to change brightness/ volume.
+1. Press Button "B" to open settings to change brightness/ volume.
 2. Navigate through joystick increase decrease volume
 3. Press the buton again to close the menu
 
 ## Interactions with remote
-1. Point the reticle to the remote Pause/Play button and press button "Submit" to pause or play the video
+1. Point the reticle to the remote Pause/Play button and press button "X" to pause or play the video
 
 Notes  
 1. Rotation does not work currently in pc but works on Android phones due to an issue with multiplayer and multiple event systems.
