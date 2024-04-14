@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraObj: {fileID: 2512171585949003388}
-  reticle: {fileID: 8413633092252818522}
+  reticle: {fileID: 9113894303366540446}
   videoPlayers: []
   light: {fileID: 5673111888120456005}
   defaultBrightness: 1

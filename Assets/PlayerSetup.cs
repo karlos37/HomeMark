@@ -13,7 +13,7 @@ public class PlayerSetup : MonoBehaviour
 	private Quaternion TargetRotation;
 
 	public GameObject cameraObj;
-	public GameObject reticle;
+	public XRCardboardReticle reticle;
 	public VideoPlayer[] videoPlayers;
 
 	private PhotonView view;
@@ -28,6 +28,8 @@ public class PlayerSetup : MonoBehaviour
 	public Light localLight;
 
 	private RaycastHit hit;
+
+	private GameObject currentTarget = null;
 
 	// Start is called before the first frame update
 	void Start()
@@ -63,21 +65,46 @@ public class PlayerSetup : MonoBehaviour
 			Vector3 rayStart = cameraObj.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5F, 0.5F, 0));
 			if (Physics.Raycast(rayStart, cameraObj.transform.forward, out hit, 50))
 			{
+				GameObject hitObject = hit.collider.gameObject;
+				if (hitObject != currentTarget)
+                {
+					if(hitObject.layer == 3)
+                    {
+						currentTarget = hitObject;
+						reticle.OnStartHover(2f);
+                    }
+
+					else
+                    {
+						if (currentTarget != null)
+						{
+							reticle.OnEndHover();
+							currentTarget = null;
+						}
+					}
+                }
+
 				Debug.Log(hit.collider.gameObject.name);
 				if (Input.GetButtonDown("js2"))
 				{
-					if (hit.collider.gameObject.name == "PlayCollider")
+					if (currentTarget.name == "PlayCollider")
 					{
 						Debug.Log(hit.collider.gameObject.name);
 						view.RPC("PlayVideo", RpcTarget.All);
 					}
-					else if (hit.collider.gameObject.name == "PauseCollider")
+					else if (currentTarget.name == "PauseCollider")
 					{
 						Debug.Log(hit.collider.gameObject.name);
 						view.RPC("PauseVideo", RpcTarget.All);
 					}
 				}
 			}
+
+			else if (currentTarget != null)
+			{
+				reticle.OnEndHover();
+				currentTarget = null;
+            }
 		}
 		else
 		{
