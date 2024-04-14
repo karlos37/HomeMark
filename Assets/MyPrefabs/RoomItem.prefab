@@ -551,7 +551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1570341874880561927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e62865458088e44974a9d86bbbfd2d, type: 3}
+  m_Script: {fileID: 11500000, guid: b0eb7a11066fe4f0f9d38fc7f80d2ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomName: test
+  RoomName: 
