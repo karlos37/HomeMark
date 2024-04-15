@@ -22,6 +22,8 @@ public class CreateMenu : MonoBehaviour
 	public RoomList roomList;
 	public RoomManager roomManager;
 
+	public GameObject movieListPanel;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -210,6 +212,7 @@ public class CreateMenu : MonoBehaviour
 
         //CREATE THE ROOM BY SENDING THE NAME, YOU CAN SEND OTHER THINGS HERE TOO, BUT YOU MUST CREATE RECEIVING FUNCTIONS IN OTHER SCRIPTS TOO
         roomList.ChangeRoomToCreateName(room.name);
+		roomManager.room = room;
         roomManager.JoinRoomButtonPressed();
     }
 }
