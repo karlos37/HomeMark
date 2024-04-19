@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 using TMPro;
+using static Room;
 
 public class CreateMenu : MonoBehaviour
 {
@@ -217,7 +218,6 @@ public class CreateMenu : MonoBehaviour
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 	}
 
-	
 	void RoomMovieOptions(bool next)
 	{
 		if (next)
