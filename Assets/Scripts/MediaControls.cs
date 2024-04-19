@@ -8,7 +8,6 @@ using UnityEngine.Video;
 public class MediaControls : MonoBehaviour
 {
     [SerializeField] GameObject videoPlayerObject;
-    [SerializeField] Slider slider;
     private VideoPlayer videoPlayer;
     
 
@@ -27,10 +26,5 @@ public class MediaControls : MonoBehaviour
     public void PauseVideo()
     {
         videoPlayer.Pause();
-    }
-
-    public void ChangeVolume()
-    {
-         videoPlayer.SetDirectAudioVolume(0, slider.value);
     }
 }

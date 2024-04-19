@@ -630,11 +630,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4185353372911635998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7574bd51ab1a694885562263f2cba84, type: 3}
+  m_Script: {fileID: 11500000, guid: 4872c121c1fb6f14ca814647117e2cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayerObject: {fileID: 0}
-  slider: {fileID: 4185353373208772265}
 --- !u!1 &4185353373208772263
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +802,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3ab4b3b35484a34ab9caaa536ef357b, type: 2}
+  - {fileID: 2100000, guid: 9e522cb5cc4edec499196af18110772a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

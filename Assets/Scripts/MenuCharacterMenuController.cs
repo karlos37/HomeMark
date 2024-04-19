@@ -13,9 +13,6 @@ public class MenuCharacterMenuController : MonoBehaviour
     private bool menuActive = false;
 
     public GameObject[] buttons;
-    private float delay = 0.01f;
-    private int buttonIndex = 0;
-    private bool isScrolling = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +29,6 @@ public class MenuCharacterMenuController : MonoBehaviour
         if (Input.GetButtonDown("js1"))
         {
             Debug.Log("Menu button pressed!");
-            buttonIndex = 0;
             // spawn menu in front of user
             Vector3 userPosition = transform.position;
             Vector3 menuPosition = userPosition + transform.forward * menuDistFromUser;
