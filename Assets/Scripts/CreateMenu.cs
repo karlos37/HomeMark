@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 using TMPro;
-using static Room;
 
 public class CreateMenu : MonoBehaviour
 {
@@ -16,13 +15,22 @@ public class CreateMenu : MonoBehaviour
 	private Room room;
 	private GameObject placeholder;
 	private TMP_InputField inputField;
-
+	private GameObject _keyboardObject;
+	private GameObject _inputGameObject;
+	
 	public GameObject MainMenu;
 	public GameObject RoomManager;
 	public RoomList roomList;
 	public RoomManager roomManager;
-
 	public GameObject movieListPanel;
+	public GameObject nextButton;
+
+	private const string ROOM_NAME_PLACEHOLDER = "Room Name";
+	private const string ROOM_PASSWORD_PLACEHOLDER = "Room Password (leave empty if public)";
+	private const string ROOM_LIGHTING_PLACEHOLDER = "General Room Lighting (0-100, Default: 50)";
+	private const string ROOM_VOLUME_PLACEHOLDER = "General Room Volume (0-100, Default: 50)";
+	private const string ROOM_BACKGROUND_PLACEHOLDER = "Room Background (default, mountains, night)";
+	private const string ROOM_MOVIE_PLACEHOLDER = "Select Movie (default, demo)";
 
 	// Start is called before the first frame update
 	void Start()
@@ -33,62 +41,58 @@ public class CreateMenu : MonoBehaviour
 		room = new Room(true);
 
 		placeholder = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").GetChild(0).Find("Placeholder").gameObject;
-		inputField = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").gameObject.GetComponent<TMP_InputField>();
+		_inputGameObject = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").gameObject;
+		inputField = _inputGameObject.GetComponent<TMP_InputField>();
+		_keyboardObject = transform.Find("Canvas").Find("OnScreenKeyboard1").gameObject;
 	}
 
 	public void handleNextButton()
 	{
-		if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Name")
-		{
-			RoomNameOptions(true);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Password (leave empty if public)")
-		{
-			RoomPasswordOptions(true);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "General Room Lighting (0-100, Default: 50)")
-		{
-			RoomLightingOptions(true);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "General Room Volume (0-100, Default: 50)")
-		{
-			RoomVolumeOptions(true);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Background (default, mountains, night)")
-		{
-			RoomBackgroundOptions(true);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Select Movie (default, demo)")
-		{
-			RoomMovieOptions(true);
+		switch(placeholder.GetComponent<TextMeshProUGUI>().text) {
+
+			case ROOM_NAME_PLACEHOLDER:
+				RoomNameOptions(true);
+				break;
+			case ROOM_PASSWORD_PLACEHOLDER:
+				RoomPasswordOptions(true);
+				break;
+			case ROOM_LIGHTING_PLACEHOLDER:
+				RoomLightingOptions(true);
+				break;
+			case ROOM_VOLUME_PLACEHOLDER:
+				RoomVolumeOptions(true);
+				break;
+			case ROOM_BACKGROUND_PLACEHOLDER:
+				RoomBackgroundOptions(true);
+				break;
+			case ROOM_MOVIE_PLACEHOLDER:
+				RoomMovieOptions(true);
+				break;
 		}
 	}
 
 	public void handleBackButton()
 	{
-		if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Name")
-		{
-			RoomNameOptions(false);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Password (leave empty if public)")
-		{
-			RoomPasswordOptions(false);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "General Room Lighting (0-100, Default: 50)")
-		{
-			RoomLightingOptions(false);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "General Room Volume (0-100, Default: 50)")
-		{
-			RoomVolumeOptions(false);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Room Background (default, mountains, night)")
-		{
-			RoomBackgroundOptions(false);
-		}
-		else if (placeholder.GetComponent<TextMeshProUGUI>().text == "Select Movie (default, demo)")
-		{
-			RoomMovieOptions(false);
+		switch (placeholder.GetComponent<TextMeshProUGUI>().text) {
+
+			case ROOM_NAME_PLACEHOLDER:
+				RoomNameOptions(false);
+				break;
+			case ROOM_PASSWORD_PLACEHOLDER:
+				RoomPasswordOptions(false);
+				break;
+			case ROOM_LIGHTING_PLACEHOLDER:
+				RoomLightingOptions(false);
+				break;
+			case ROOM_VOLUME_PLACEHOLDER:
+				RoomVolumeOptions(false);
+				break;
+			case ROOM_BACKGROUND_PLACEHOLDER:
+				RoomBackgroundOptions(false);
+				break;
+			case ROOM_MOVIE_PLACEHOLDER:
+				RoomMovieOptions(false);
+				break;
 		}
 	}
 
@@ -97,7 +101,7 @@ public class CreateMenu : MonoBehaviour
 		if (next)
 		{
 			room.name = inputField.text;
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Password (leave empty if public)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_PASSWORD_PLACEHOLDER;
 			inputField.text = "";
 
 			EventSystem.current.SetSelectedGameObject(null);
@@ -117,17 +121,27 @@ public class CreateMenu : MonoBehaviour
 		if (next)
 		{
 			room.password = inputField.text;
-			if (String.IsNullOrEmpty(room.password))
+			if (string.IsNullOrEmpty(room.password))
 			{
 				room.isPublic = true;
 			}
-			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Lighting (0-100, Default: 50)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_LIGHTING_PLACEHOLDER;
+			inputField.text = "";
+			
 		}
 		else
 		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Name";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_NAME_PLACEHOLDER;
+			if (string.IsNullOrEmpty(room.name))
+            {
+				inputField.text = "";
+			}
+			else
+            {
+				inputField.text = room.name;
+            }
+			
 		}
-		inputField.text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 	}
@@ -136,17 +150,25 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (next)
 		{
-			if (!String.IsNullOrEmpty(inputField.text))
+			if (!string.IsNullOrEmpty(inputField.text))
 			{
 				room.lighting = float.Parse(inputField.text);
 			}
-			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Volume (0-100, Default: 50)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_VOLUME_PLACEHOLDER;
+			inputField.text = room.volume.ToString();
 		}
 		else
 		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Password (leave empty if public)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_PASSWORD_PLACEHOLDER;
+			if (string.IsNullOrEmpty(room.password))
+            {
+				inputField.text = "";
+            }
+			else
+            {
+				inputField.text = room.password;
+            }
 		}
-		inputField.text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 	}
@@ -155,17 +177,18 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (next)
 		{
-			if (!String.IsNullOrEmpty(inputField.text))
+			if (!string.IsNullOrEmpty(inputField.text))
 			{
 				room.volume = float.Parse(inputField.text);
 			}
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Background (default, mountains, night)";
+			inputField.text = "";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_BACKGROUND_PLACEHOLDER;
 		}
 		else
 		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Lighting (0-100, Default: 50)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_LIGHTING_PLACEHOLDER;
+			inputField.text = "";
 		}
-		inputField.text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 	}
@@ -174,18 +197,27 @@ public class CreateMenu : MonoBehaviour
 	{
 		if (next)
 		{
+			movieListPanel.SetActive(true);
+			nextButton.SetActive(false);
 			room.background = inputField.text;
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Select Movie (default, demo)";
+			_keyboardObject.SetActive(false);
+			_inputGameObject.SetActive(false);
+			// placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_MOVIE_PLACEHOLDER;
 		}
 		else
 		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = "General Room Volume (0-100, Default: 50)";
+			movieListPanel.SetActive(false);
+			nextButton.SetActive(true);
+			_inputGameObject.SetActive(true);
+			_keyboardObject.SetActive(true);
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_VOLUME_PLACEHOLDER;
 		}
 		inputField.text = "";
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 	}
 
+	
 	void RoomMovieOptions(bool next)
 	{
 		if (next)
@@ -198,11 +230,21 @@ public class CreateMenu : MonoBehaviour
 		}
 		else
 		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = "Room Background (default, mountains, night)";
+			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_BACKGROUND_PLACEHOLDER;
 			inputField.text = "";
 			EventSystem.current.SetSelectedGameObject(null);
 			EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 		}
+	}
+
+	public void OnMovieSelected(string moviePath)
+	{
+		print(moviePath);
+		Debug.Log(moviePath);
+		room.movie = moviePath;
+		movieListPanel.SetActive(false);
+		gameObject.SetActive(false);
+		CreateRoom();
 	}
 
 	void CreateRoom()

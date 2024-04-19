@@ -37,7 +37,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connecting...");
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.CustomRoomProperties.Add("movie_url", room.movie);
+        ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable();
+        customRoomProperties["movie_url"] = room.movie;
+        roomOptions.CustomRoomProperties = customRoomProperties;
         // Check if PhotonNetwork is connected to the master server before joining or creating a room
         if (PhotonNetwork.IsConnected)
         {

@@ -84,17 +84,14 @@ public class PlayerSetup : MonoBehaviour
 					}
                 }
 
-				Debug.Log(hit.collider.gameObject.name);
 				if (Input.GetButtonDown("js2"))
 				{
 					if (currentTarget.name == "PlayCollider")
 					{
-						Debug.Log(hit.collider.gameObject.name);
 						view.RPC("PlayVideo", RpcTarget.All);
 					}
 					else if (currentTarget.name == "PauseCollider")
 					{
-						Debug.Log(hit.collider.gameObject.name);
 						view.RPC("PauseVideo", RpcTarget.All);
 					}
 				}
