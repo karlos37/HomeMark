@@ -239,8 +239,6 @@ public class CreateMenu : MonoBehaviour
 
 	public void OnMovieSelected(string moviePath)
 	{
-		print(moviePath);
-		Debug.Log(moviePath);
 		room.movie = moviePath;
 		movieListPanel.SetActive(false);
 		gameObject.SetActive(false);
