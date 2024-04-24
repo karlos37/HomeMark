@@ -70,7 +70,15 @@ public class PlayerSetup : MonoBehaviour
                 {
 					if(hitObject.layer == 3)
                     {
+						if (currentTarget != null && currentTarget.GetComponent<Outline>() != null && currentTarget.GetComponent<Outline>().enabled)
+						{
+							currentTarget.GetComponent<Outline>().enabled = false;
+						}
 						currentTarget = hitObject;
+						if (currentTarget.GetComponent<Outline>() != null)
+						{
+							currentTarget.GetComponent<Outline>().enabled = true;
+						}
 						reticle.OnStartHover(2f);
                     }
 
@@ -79,6 +87,10 @@ public class PlayerSetup : MonoBehaviour
 						if (currentTarget != null)
 						{
 							reticle.OnEndHover();
+							if (currentTarget.GetComponent<Outline>() != null)
+							{
+								currentTarget.GetComponent<Outline>().enabled = false;
+							}
 							currentTarget = null;
 						}
 					}
@@ -96,10 +108,13 @@ public class PlayerSetup : MonoBehaviour
 					}
 				}
 			}
-
 			else if (currentTarget != null)
 			{
 				reticle.OnEndHover();
+				if (currentTarget.GetComponent<Outline>() != null)
+				{
+					currentTarget.GetComponent<Outline>().enabled = false;
+				}
 				currentTarget = null;
             }
 		}
