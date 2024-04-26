@@ -21,6 +21,9 @@ public class PlayerSetup : MonoBehaviour
 	private MenuCharacterMenuController menuControl;
 	public GameObject light;
 
+	private GameObject burger;
+	private GameObject drink;
+
 	private float speed;
 
 	public float defaultBrightness = 1f;
@@ -38,6 +41,11 @@ public class PlayerSetup : MonoBehaviour
 		charControl = GetComponent<CharacterController>();
 		menuControl = GetComponent<MenuCharacterMenuController>();
 		speed = 5f;
+
+		burger = GameObject.Find("Burger");
+		burger.SetActive(false);
+		drink = GameObject.Find("Drink");
+		drink.SetActive(false);
 
 		videoPlayers = FindObjectsOfType<VideoPlayer>();
 
@@ -96,7 +104,8 @@ public class PlayerSetup : MonoBehaviour
 					}
                 }
 
-				if (Input.GetButtonDown("js2"))
+				//if (Input.GetButtonDown("js2"))
+				if (Input.GetKeyDown("x"))
 				{
 					if (currentTarget.name == "PlayCollider")
 					{
@@ -105,6 +114,23 @@ public class PlayerSetup : MonoBehaviour
 					else if (currentTarget.name == "PauseCollider")
 					{
 						view.RPC("PauseVideo", RpcTarget.All);
+					}
+					else if (currentTarget.name.Contains("Armchair"))
+					{
+						charControl.enabled = false;
+						transform.position = new Vector3(currentTarget.transform.position.x, currentTarget.transform.position.y + 0.5f, currentTarget.transform.position.z);
+						transform.rotation = Quaternion.LookRotation(currentTarget.transform.forward);
+						charControl.enabled = true;
+					}
+					else if (currentTarget.name == "Snack Machine")
+					{
+						GameObject newburger = Instantiate(burger, new Vector3(-26f, 5f, 23f), new Quaternion(0, 0, 0, 0));
+						newburger.SetActive(true);
+					}
+					else if (currentTarget.name == "Drink Machine")
+					{
+						GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
+						newdrink.SetActive(true);
 					}
 				}
 			}
