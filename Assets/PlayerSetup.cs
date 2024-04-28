@@ -24,6 +24,9 @@ public class PlayerSetup : MonoBehaviour
 	private GameObject burger;
 	private GameObject drink;
 
+	private GameObject myBurger;
+	private GameObject myDrink;
+
 	private float speed;
 
 	public float defaultBrightness = 1f;
@@ -46,6 +49,8 @@ public class PlayerSetup : MonoBehaviour
 		burger.SetActive(false);
 		drink = GameObject.Find("Drink");
 		drink.SetActive(false);
+		myBurger = null;
+		myDrink = null;
 
 		videoPlayers = FindObjectsOfType<VideoPlayer>();
 
@@ -132,6 +137,14 @@ public class PlayerSetup : MonoBehaviour
 						GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
 						newdrink.SetActive(true);
 					}
+					else if (currentTarget.name.Contains("Drink") && myDrink == null)
+					{
+						myDrink = currentTarget;
+					}
+					else if (currentTarget.name.Contains("Burger") && myBurger == null)
+					{
+						myBurger = currentTarget;
+					}
 				}
 			}
 			else if (currentTarget != null)
@@ -143,6 +156,14 @@ public class PlayerSetup : MonoBehaviour
 				}
 				currentTarget = null;
             }
+			if (myDrink != null)
+			{
+				myDrink.transform.position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z + 2f);
+			}
+			if (myBurger != null)
+			{
+				myBurger.transform.position = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z + 2f);
+			}
 		}
 		else
 		{
