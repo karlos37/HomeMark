@@ -200,7 +200,9 @@ public class CreateMenu : MonoBehaviour
 		{
 			movieListPanel.SetActive(true);
 			nextButton.SetActive(false);
-			room.background = inputField.text;
+			// TODO: Make the UI List setup
+			// room.background = inputField.text;
+			room.background = Background.Mountain;
 			_keyboardObject.SetActive(false);
 			_inputGameObject.SetActive(false);
 			// placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_MOVIE_PLACEHOLDER;

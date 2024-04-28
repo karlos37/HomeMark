@@ -4,13 +4,15 @@ using UnityEngine;
 
 public struct Room
 {
+	public enum Background { Theatre, Mountain, Space }
+	
 	public string name { get; set; }
 	public bool isPublic { get; set; }
 	public string password { get; set; }
 	public string movie { get; set; }
 	public float lighting { get; set; }
 	public float volume { get; set; }
-	public string background { get; set; }
+	public Background background { get; set; }
 
 	public Room(bool defaultVal)
 	{
@@ -20,7 +22,7 @@ public struct Room
 		this.movie = "";
 		this.lighting = 50f;
 		this.volume = 50f;
-		this.background = "";
+		this.background = Background.Theatre;
 	}
 
 	public Room(string name, bool isPublic, string password, string movie, float lighting, float volume, string background)
@@ -31,7 +33,7 @@ public struct Room
 		this.movie = movie;
 		this.lighting = lighting;
 		this.volume = volume;
-		this.background = background;
+		this.background = Background.Theatre;
 	}
 
 	public Room(string name, bool isPublic, string movie, float lighting, float volume, string background)
@@ -42,6 +44,6 @@ public struct Room
 		this.movie = movie;
 		this.lighting = lighting;
 		this.volume = volume;
-		this.background = background;
+		this.background = Background.Theatre;
 	}
 }
