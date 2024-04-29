@@ -18,6 +18,8 @@ public class CreateMenu : MonoBehaviour
 	private TMP_InputField inputField;
 	private GameObject _keyboardObject;
 	private GameObject _inputGameObject;
+	private GameObject _navigationGameObject;
+	private GameObject _keyboardInstructionsGameObject;
 	
 	public GameObject MainMenu;
 	public GameObject RoomManager;
@@ -27,12 +29,12 @@ public class CreateMenu : MonoBehaviour
 	public GameObject backgroundListPane;
 	public GameObject nextButton;
 
-	private const string ROOM_NAME_PLACEHOLDER = "Room Name";
-	private const string ROOM_PASSWORD_PLACEHOLDER = "Room Password (leave empty if public)";
-	private const string ROOM_LIGHTING_PLACEHOLDER = "General Room Lighting (0-100, Default: 50)";
-	private const string ROOM_VOLUME_PLACEHOLDER = "General Room Volume (0-100, Default: 50)";
-	private const string ROOM_BACKGROUND_PLACEHOLDER = "Room Background (default, mountains, night)";
-	private const string ROOM_MOVIE_PLACEHOLDER = "Select Movie (default, demo)";
+	private const string ROOM_NAME_PLACEHOLDER = "Enter Room Name";
+	private const string NAME = "name";
+	private const string BACKGROUND = "background";
+	private const string MOVIE = "movie";
+
+	private string current_screen;
 
 	// Start is called before the first frame update
 	void Start()
@@ -41,31 +43,22 @@ public class CreateMenu : MonoBehaviour
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 
 		room = new Room(true);
+		current_screen = NAME;
 
 		placeholder = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").GetChild(0).Find("Placeholder").gameObject;
 		_inputGameObject = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").gameObject;
 		inputField = _inputGameObject.GetComponent<TMP_InputField>();
 		_keyboardObject = transform.Find("Canvas").Find("OnScreenKeyboard1").gameObject;
+		_navigationGameObject = transform.Find("Canvas").Find("CreatePanel").Find("Instruction").gameObject;
+		_keyboardInstructionsGameObject = transform.Find("Canvas").Find("CreatePanel").Find("Keyboard").gameObject;
 	}
 
 	public void HandleNextButton()
 	{
-		switch(placeholder.GetComponent<TextMeshProUGUI>().text) {
-
-			case ROOM_NAME_PLACEHOLDER:
+		switch(current_screen) 
+		{
+			case NAME:
 				RoomNameOptions(true);
-				break;
-			case ROOM_PASSWORD_PLACEHOLDER:
-				RoomPasswordOptions(true);
-				break;
-			case ROOM_LIGHTING_PLACEHOLDER:
-				RoomLightingOptions(true);
-				break;
-			case ROOM_VOLUME_PLACEHOLDER:
-				RoomVolumeOptions(true);
-				break;
-			case ROOM_BACKGROUND_PLACEHOLDER:
-				RoomBackgroundOptions(true);
 				break;
 			default:
 				print("Not a valid option");
@@ -75,25 +68,16 @@ public class CreateMenu : MonoBehaviour
 
 	public void HandleBackButton()
 	{
-		switch (placeholder.GetComponent<TextMeshProUGUI>().text) {
-
-			case ROOM_NAME_PLACEHOLDER:
+		switch (current_screen) 
+		{
+			case NAME:
 				RoomNameOptions(false);
 				break;
-			case ROOM_PASSWORD_PLACEHOLDER:
-				RoomPasswordOptions(false);
+			case BACKGROUND:
+				RoomBackgroundBackOptions();
 				break;
-			case ROOM_LIGHTING_PLACEHOLDER:
-				RoomLightingOptions(false);
-				break;
-			case ROOM_VOLUME_PLACEHOLDER:
-				RoomVolumeOptions(false);
-				break;
-			case ROOM_BACKGROUND_PLACEHOLDER:
-				RoomBackgroundOptions(false);
-				break;
-			case ROOM_MOVIE_PLACEHOLDER:
-				RoomMovieOptions(false);
+			case MOVIE:
+				RoomMovieBackOptions();
 				break;
 		}
 	}
@@ -103,11 +87,15 @@ public class CreateMenu : MonoBehaviour
 		if (next)
 		{
 			room.name = inputField.text;
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_PASSWORD_PLACEHOLDER;
-			inputField.text = "";
 
-			EventSystem.current.SetSelectedGameObject(null);
-			EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
+			backgroundListPane.SetActive(true);
+			nextButton.SetActive(false);
+			_keyboardObject.SetActive(false);
+			_inputGameObject.SetActive(false);
+			_navigationGameObject.SetActive(false);
+			_keyboardInstructionsGameObject.SetActive(false);
+
+			current_screen = BACKGROUND;
 		}
 		else
 		{
@@ -118,128 +106,32 @@ public class CreateMenu : MonoBehaviour
 		}
 	}
 
-	void RoomPasswordOptions(bool next)
+	void RoomBackgroundBackOptions()
 	{
-		if (next)
-		{
-			room.password = inputField.text;
-			if (string.IsNullOrEmpty(room.password))
-			{
-				room.isPublic = true;
-			}
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_LIGHTING_PLACEHOLDER;
-			inputField.text = "";
-			
-		}
-		else
-		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_NAME_PLACEHOLDER;
-			if (string.IsNullOrEmpty(room.name))
-            {
-				inputField.text = "";
-			}
-			else
-            {
-				inputField.text = room.name;
-            }
-			
-		}
+		nextButton.SetActive(true);
+		_inputGameObject.SetActive(true);
+		_keyboardObject.SetActive(true);
+		_navigationGameObject.SetActive(true);
+		_keyboardInstructionsGameObject.SetActive(true);
+		placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_NAME_PLACEHOLDER;
+		inputField.text = room.name;
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
+		current_screen = NAME;
+		backgroundListPane.SetActive(false);
 	}
 
-	void RoomLightingOptions(bool next)
+	void RoomMovieBackOptions()
 	{
-		if (next)
-		{
-			if (!string.IsNullOrEmpty(inputField.text))
-			{
-				room.lighting = float.Parse(inputField.text);
-			}
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_VOLUME_PLACEHOLDER;
-			inputField.text = room.volume.ToString();
-		}
-		else
-		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_PASSWORD_PLACEHOLDER;
-			if (string.IsNullOrEmpty(room.password))
-            {
-				inputField.text = "";
-            }
-			else
-            {
-				inputField.text = room.password;
-            }
-		}
-		EventSystem.current.SetSelectedGameObject(null);
-		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
-	}
-
-	void RoomVolumeOptions(bool next)
-	{
-		if (next)
-		{
-			backgroundListPane.SetActive(true);
-			nextButton.SetActive(false);
-			_keyboardObject.SetActive(false);
-			_inputGameObject.SetActive(false);
-		}
-		else
-		{
-			backgroundListPane.SetActive(false);
-			nextButton.SetActive(true);
-			_inputGameObject.SetActive(true);
-			_keyboardObject.SetActive(true);
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_LIGHTING_PLACEHOLDER;
-			inputField.text = "";
-		}
-		EventSystem.current.SetSelectedGameObject(null);
-		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
-	}
-
-	void RoomBackgroundOptions(bool next)
-	{
-		if (next)
-		{
-			movieListPanel.SetActive(true);
-			nextButton.SetActive(false);
-			_keyboardObject.SetActive(false);
-			_inputGameObject.SetActive(false);
-			// placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_MOVIE_PLACEHOLDER;
-		}
-		else
-		{
-			movieListPanel.SetActive(false);
-			nextButton.SetActive(true);
-			_inputGameObject.SetActive(true);
-			_keyboardObject.SetActive(true);
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_VOLUME_PLACEHOLDER;
-		}
-		inputField.text = "";
-		EventSystem.current.SetSelectedGameObject(null);
-		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
-	}
-
-	void RoomMovieOptions(bool next)
-	{
-		if (next)
-		{
-			room.movie = inputField.text;
-			CreateRoom();
-			gameObject.SetActive(false); //hides the create menu
-		}
-		else
-		{
-			placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_BACKGROUND_PLACEHOLDER;
-			inputField.text = "";
-			EventSystem.current.SetSelectedGameObject(null);
-			EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
-		}
+		current_screen = BACKGROUND;
+		movieListPanel.SetActive(false);
+		backgroundListPane.SetActive(true);
 	}
 	
 	public void OnBackgroundSelected(Background bg)
 	{
 		room.background = bg;
+		current_screen = MOVIE;
 		backgroundListPane.SetActive(false);
 		movieListPanel.SetActive(true);
 	}
