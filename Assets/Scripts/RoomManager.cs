@@ -135,10 +135,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
         Skybox skyboxComponent = cameraObj.AddComponent<Skybox>();
         skyboxComponent.material = skyBoxMaterial;
         playerCam.clearFlags = CameraClearFlags.Skybox;
-        foreach (MeshRenderer wallRenderer in _wallsMeshRenderers)
-        {
-            wallRenderer.enabled = false;
-        }
+        // foreach (MeshRenderer wallRenderer in _wallsMeshRenderers)
+        // {
+        //     wallRenderer.enabled = false;
+        // }
         _seats.SetActive(false);
         _stairs.SetActive(false);
         _levels.SetActive(false);
