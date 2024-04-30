@@ -45,11 +45,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
         }
     }
-
-    public void JoinRoomButtonPressed()
+    
+    public void CreateRoomButtonPressed()
     {
         Debug.Log("Connecting...");
-		RoomOptions roomOptions = new RoomOptions();
+        RoomOptions roomOptions = new RoomOptions();
         ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable();
         customRoomProperties["movie_url"] = room.movie;
         customRoomProperties["background"] = room.background;
@@ -58,6 +58,22 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected)
         {
             PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, roomOptions, null);
+        }
+        else
+        {
+            Debug.Log("PhotonNetwork is not connected to the master server.");
+            PhotonNetwork.ConnectUsingSettings();
+        }
+    }
+
+
+    public void JoinRoomButtonPressed()
+    {
+        Debug.Log("Connecting...");
+        // Check if PhotonNetwork is connected to the master server before joining or creating a room
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, null, null);
         }
         else
         {
@@ -75,6 +91,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        MeshRenderer[] meshRenderers = theatre.transform.Find("Walls").GetComponentsInChildren<MeshRenderer>();
+        _wallsMeshRenderers = new List<MeshRenderer>(meshRenderers);
+        _seats = theatre.transform.Find("Seats").gameObject;
+        _stairs = theatre.transform.Find("Stairs").gameObject;
+        _levels = theatre.transform.Find("Levels").gameObject;
         Debug.Log("Joined room successfully.");
         // Disable room camera and menu character
         roomCam.SetActive(false);
@@ -85,18 +106,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		
 		Room.Background bg = (Room.Background)PhotonNetwork.CurrentRoom.CustomProperties["background"];
         ChangeBackgroundSettings(bg,theatre, _player);
-    }
-    
-    public override void OnCreatedRoom()
-    {
-        base.OnCreatedRoom();
         string movie_url = (string)PhotonNetwork.CurrentRoom.CustomProperties["movie_url"];
         videoPlayer.url = movie_url;
-        MeshRenderer[] meshRenderers = theatre.transform.Find("Walls").GetComponentsInChildren<MeshRenderer>();
-        _wallsMeshRenderers = new List<MeshRenderer>(meshRenderers);
-        _seats = theatre.transform.Find("Seats").gameObject;
-        _stairs = theatre.transform.Find("Stairs").gameObject;
-        _levels = theatre.transform.Find("Levels").gameObject;
     }
 
     // Handle case when joining room fails
