@@ -24,9 +24,6 @@ public class PlayerSetup : MonoBehaviour
 	private GameObject burger;
 	private GameObject drink;
 
-	private GameObject myBurger;
-	private GameObject myDrink;
-
 	private float speed;
 
 	public float defaultBrightness = 1f;
@@ -134,11 +131,11 @@ public class PlayerSetup : MonoBehaviour
 					}
 					else if (currentTarget.name.Contains("Drink"))
 					{
-						view.RPC("MoveDrink", RpcTarget.All);
+						view.RPC("MoveDrink", RpcTarget.All, currentTarget.name);
 					}
 					else if (currentTarget.name.Contains("Burger"))
 					{
-						view.RPC("MoveBurger", RpcTarget.All);
+						view.RPC("MoveBurger", RpcTarget.All, currentTarget.name);
 					}
 					else if (currentTarget.name.Contains("Cockpit3_WithInterior"))
 					{
@@ -185,7 +182,6 @@ public class PlayerSetup : MonoBehaviour
 	{
 		GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
 		newdrink.SetActive(true);
-		myDrink = newdrink;
 	}
 
 	[PunRPC]
@@ -193,19 +189,18 @@ public class PlayerSetup : MonoBehaviour
 	{
 		GameObject newburger = Instantiate(burger, new Vector3(-26f, 5f, 23f), new Quaternion(0, 0, 0, 0));
 		newburger.SetActive(true);
-		myBurger = newburger;
 	}
 
 	[PunRPC]
-	public void MoveBurger()
+	public void MoveBurger(string objName)
 	{
-		myBurger.transform.position = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z + 2f);
+		GameObject.Find(objName).transform.position = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z + 2f);
 	}
 
 	[PunRPC]
-	public void MoveDrink()
+	public void MoveDrink(string objName)
 	{
-		myDrink.transform.position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z + 2f);
+		GameObject.Find(objName).transform.position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z + 2f);
 	}
 
 	[PunRPC]
