@@ -140,6 +140,13 @@ public class PlayerSetup : MonoBehaviour
 					{
 						myBurger = currentTarget;
 					}
+					else if (currentTarget.name.Contains("Cockpit3_WithInterior"))
+					{
+						charControl.enabled = false;
+						transform.position = new Vector3(currentTarget.transform.position.x, currentTarget.transform.position.y + 0.5f, currentTarget.transform.position.z);
+						transform.rotation = Quaternion.LookRotation(currentTarget.transform.forward);
+						charControl.enabled = true;
+					}
 				}
 			}
 			else if (currentTarget != null)
