@@ -216,6 +216,8 @@ MonoBehaviour:
   reticle: {fileID: 9113894303366540446}
   videoPlayers: []
   light: {fileID: 5673111888120456005}
+  burger: {fileID: 6204463763682365560, guid: c7232173ec62a4648bc000bf0b5baf1a, type: 3}
+  drink: {fileID: 1872261569430189388, guid: 51d6319d2b9742640a6b2bb01da1dc59, type: 3}
   defaultBrightness: 1
   localLight: {fileID: 0}
 --- !u!114 &1127696056427816100

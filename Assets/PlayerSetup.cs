@@ -21,8 +21,8 @@ public class PlayerSetup : MonoBehaviour
 	private MenuCharacterMenuController menuControl;
 	public GameObject light;
 
-	private GameObject burger;
-	private GameObject drink;
+	public GameObject burger;
+	public GameObject drink;
 
 	private GameObject myBurger;
 	private GameObject myDrink;
@@ -45,10 +45,6 @@ public class PlayerSetup : MonoBehaviour
 		menuControl = GetComponent<MenuCharacterMenuController>();
 		speed = 5f;
 
-		burger = GameObject.Find("Burger");
-		burger.SetActive(false);
-		drink = GameObject.Find("Drink");
-		drink.SetActive(false);
 		myBurger = null;
 		myDrink = null;
 
