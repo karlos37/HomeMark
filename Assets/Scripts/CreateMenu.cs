@@ -207,11 +207,12 @@ public class CreateMenu : MonoBehaviour
 	{
         //ENABLE THE ROOM MANAGER
         RoomManager.SetActive(true);
-
-        //CREATE THE ROOM BY SENDING THE NAME, YOU CAN SEND OTHER THINGS HERE TOO, BUT YOU MUST CREATE RECEIVING FUNCTIONS IN OTHER SCRIPTS TOO
-        roomList.ChangeRoomToCreateName(room.name);
-		roomManager.room = room;
 		roomManager.SetPlayerName(player_name);
+
+		//CREATE THE ROOM BY SENDING THE NAME, YOU CAN SEND OTHER THINGS HERE TOO, BUT YOU MUST CREATE RECEIVING FUNCTIONS IN OTHER SCRIPTS TOO
+		roomList.ChangeRoomToCreateName(room.name);
+		roomManager.room = room;
+		
 		roomManager.CreateRoomButtonPressed();
     }
 
