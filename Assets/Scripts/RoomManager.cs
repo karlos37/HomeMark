@@ -26,7 +26,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
 	public Room room;
 
-    private List<MeshRenderer> _wallsMeshRenderers;
     private GameObject _seats;
     private GameObject _levels;
     private GameObject _stairs;
@@ -91,8 +90,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        MeshRenderer[] meshRenderers = theatre.transform.Find("Walls").GetComponentsInChildren<MeshRenderer>();
-        _wallsMeshRenderers = new List<MeshRenderer>(meshRenderers);
         _seats = theatre.transform.Find("Seats").gameObject;
         _stairs = theatre.transform.Find("Stairs").gameObject;
         _levels = theatre.transform.Find("Levels").gameObject;
@@ -151,10 +148,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         Skybox skyboxComponent = cameraObj.AddComponent<Skybox>();
         skyboxComponent.material = skyBoxMaterial;
         playerCam.clearFlags = CameraClearFlags.Skybox;
-        foreach (MeshRenderer wallRenderer in _wallsMeshRenderers)
-        {
-            wallRenderer.enabled = false;
-        }
         _seats.SetActive(false);
         _stairs.SetActive(false);
         _levels.SetActive(false);
