@@ -57,7 +57,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         // Check if PhotonNetwork is connected to the master server before joining or creating a room
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, roomOptions, null);
+            PhotonNetwork.CreateRoom(roomNameToJoin, roomOptions, null);
         }
         else
         {
@@ -73,7 +73,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         // Check if PhotonNetwork is connected to the master server before joining or creating a room
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinOrCreateRoom(roomNameToJoin, null, null);
+            PhotonNetwork.JoinRoom(roomNameToJoin, null);
         }
         else
         {
@@ -86,7 +86,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to master server.");
         // After connecting to the master server, join or create the room
-        JoinRoomButtonPressed();
+        CreateRoomButtonPressed();
     }
 
     public override void OnJoinedRoom()
@@ -103,7 +103,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		// Instantiate player at spawn point
 		GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
         _player.transform.GetChild(0).GetChild(0).GameObject().GetComponent<TMP_Text>().SetText(playerName);
-		
+        
+        print(PhotonNetwork.CurrentRoom.CustomProperties);
 		Room.Background bg = (Room.Background)PhotonNetwork.CurrentRoom.CustomProperties["background"];
         ChangeBackgroundSettings(bg,theatre, _player);
         string movie_url = (string)PhotonNetwork.CurrentRoom.CustomProperties["movie_url"];
