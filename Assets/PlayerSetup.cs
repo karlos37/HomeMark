@@ -68,6 +68,7 @@ public class PlayerSetup : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		transform.GetChild(0).GetChild(0).position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		if (view.IsMine)
 		{
 			RegularMove();
@@ -79,6 +80,7 @@ public class PlayerSetup : MonoBehaviour
 			if (Physics.Raycast(rayStart, cameraObj.transform.forward, out hit, 50))
 			{
 				GameObject hitObject = hit.collider.gameObject;
+
 				if (hitObject != currentTarget)
                 {
 					if(hitObject.layer == 3)

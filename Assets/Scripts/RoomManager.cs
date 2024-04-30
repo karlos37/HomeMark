@@ -7,6 +7,7 @@ using Photon.Realtime;
 using Unity.VisualScripting;
 using UnityEngine.Serialization;
 using UnityEngine.Video;
+using TMPro;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
@@ -22,15 +23,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public Material mountainSkyboxMaterial;
     public GameObject theatre;
     public GameObject mainFloor;
-    
-    public Room room;
+
+	public Room room;
 
     private List<MeshRenderer> _wallsMeshRenderers;
     private GameObject _seats;
     private GameObject _levels;
     private GameObject _stairs;
-    
-    private void Awake()
+    private string playerName;
+
+	private void Awake()
     {
         Instance = this;
     }
@@ -47,7 +49,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public void JoinRoomButtonPressed()
     {
         Debug.Log("Connecting...");
-        RoomOptions roomOptions = new RoomOptions();
+		RoomOptions roomOptions = new RoomOptions();
         ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable();
         customRoomProperties["movie_url"] = room.movie;
         customRoomProperties["background"] = room.background;
@@ -79,7 +81,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
         menuCharacter.SetActive(false);
 		// Instantiate player at spawn point
 		GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
-        Room.Background bg  = (Room.Background)PhotonNetwork.CurrentRoom.CustomProperties["background"];
+        _player.transform.GetChild(0).GetChild(0).GameObject().GetComponent<TMP_Text>().SetText(playerName);
+		
+		Room.Background bg = (Room.Background)PhotonNetwork.CurrentRoom.CustomProperties["background"];
         ChangeBackgroundSettings(bg,theatre, _player);
     }
     
@@ -148,4 +152,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
         MeshRenderer theatreFloor = theater1.transform.Find("Plane").GetComponent<MeshRenderer>();
         theatreFloor.enabled = false;
     }
+
+	public void SetPlayerName(string pName)
+    {
+		playerName = pName;
+	}
 }

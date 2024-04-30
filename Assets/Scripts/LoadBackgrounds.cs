@@ -36,7 +36,10 @@ public class LoadBackgrounds : MonoBehaviour
         }
         _buttons[^1] = backButton;
         _selectedButtonIndex = 0;
-    }
+
+		EventSystem.current.SetSelectedGameObject(null);
+		EventSystem.current.SetSelectedGameObject(_buttons[_selectedButtonIndex].gameObject);
+	}
 
     // Update is called once per frame
     void Update()

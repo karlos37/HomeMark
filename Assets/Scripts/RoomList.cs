@@ -17,8 +17,9 @@ public class RoomList : MonoBehaviourPunCallbacks
     public GameObject roomListItemPrefab;
 
     private List<RoomInfo> cachedRoomList = new List<RoomInfo>();
+	private string playerName;
 
-    public void ChangeRoomToCreateName(string _roomName)
+	public void ChangeRoomToCreateName(string _roomName)
     {
         roomManager.roomNameToJoin = _roomName;
     }
@@ -111,10 +112,15 @@ public class RoomList : MonoBehaviourPunCallbacks
     {
         roomManager.roomNameToJoin = _name;
         roomManagerGameobject.SetActive(true);
-
-        roomManager.JoinRoomButtonPressed(); //calls to join room with the room name we already set should technically do this but meh
+		roomManager.SetPlayerName(playerName);
+		roomManager.JoinRoomButtonPressed(); //calls to join room with the room name we already set should technically do this but meh
 
         gameObject.SetActive(false);
 
     }
+
+	public void SetPlayerName(string pName)
+	{
+		playerName = pName;
+	}
 }

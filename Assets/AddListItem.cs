@@ -50,7 +50,10 @@ public class AddListItem : MonoBehaviour
         }
 
         _buttons[_movies.Length] = backButton;
-    }
+
+		EventSystem.current.SetSelectedGameObject(null);
+		EventSystem.current.SetSelectedGameObject(_buttons[0].gameObject);
+	}
     
 
     // Update is called once per frame

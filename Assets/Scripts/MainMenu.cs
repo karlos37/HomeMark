@@ -32,7 +32,11 @@ public class MainMenu : MonoBehaviour
 
 	public void goToJoinMenu()
 	{
-		JoinScreen.SetActive(true);
+		CreateScreen.SetActive(true);
+		CreateScreen.GetComponent<CreateMenu>().SetScreen("userJoin");
+		CreateScreen.GetComponent<CreateMenu>().SetPlaceholderText();
+		EventSystem.current.SetSelectedGameObject(null);
+		EventSystem.current.SetSelectedGameObject(CreateScreen.transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 		gameObject.SetActive(false);
 	}
 
