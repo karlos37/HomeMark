@@ -216,8 +216,6 @@ MonoBehaviour:
   reticle: {fileID: 9113894303366540446}
   videoPlayers: []
   light: {fileID: 5673111888120456005}
-  burger: {fileID: 6204463763682365560, guid: c7232173ec62a4648bc000bf0b5baf1a, type: 3}
-  drink: {fileID: 1872261569430189388, guid: 51d6319d2b9742640a6b2bb01da1dc59, type: 3}
   defaultBrightness: 1
   localLight: {fileID: 0}
 --- !u!114 &1127696056427816100
@@ -1098,6 +1096,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37b0a5db580c58245b919930ddc755ce, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37b0a5db580c58245b919930ddc755ce, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37b0a5db580c58245b919930ddc755ce, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37b0a5db580c58245b919930ddc755ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1136,6 +1146,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 37b0a5db580c58245b919930ddc755ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 37b0a5db580c58245b919930ddc755ce, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 37b0a5db580c58245b919930ddc755ce, type: 3}
       propertyPath: m_Name
