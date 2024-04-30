@@ -45,10 +45,10 @@ public class PlayerSetup : MonoBehaviour
 		menuControl = GetComponent<MenuCharacterMenuController>();
 		speed = 5f;
 
-		myBurger = null;
-		myDrink = null;
 		burger = GameObject.Find("Burger");
+		burger.SetActive(false);
 		drink = GameObject.Find("Drink");
+		drink.SetActive(false);
 
 		videoPlayers = FindObjectsOfType<VideoPlayer>();
 
@@ -132,13 +132,13 @@ public class PlayerSetup : MonoBehaviour
 					{
 						view.RPC("SpawnDrink", RpcTarget.All);
 					}
-					else if (currentTarget.name.Contains("Drink") && myDrink == null)
+					else if (currentTarget.name.Contains("Drink"))
 					{
-						myDrink = currentTarget;
+						view.RPC("MoveDrink", RpcTarget.All);
 					}
-					else if (currentTarget.name.Contains("Burger") && myBurger == null)
+					else if (currentTarget.name.Contains("Burger"))
 					{
-						myBurger = currentTarget;
+						view.RPC("MoveBurger", RpcTarget.All);
 					}
 					else if (currentTarget.name.Contains("Cockpit3_WithInterior"))
 					{
@@ -158,14 +158,6 @@ public class PlayerSetup : MonoBehaviour
 				}
 				currentTarget = null;
             }
-			if (myDrink != null)
-			{
-				view.RPC("MoveDrink", RpcTarget.All);
-			}
-			if (myBurger != null)
-			{
-				view.RPC("MoveBurger", RpcTarget.All);
-			}
 		}
 		else
 		{
@@ -192,16 +184,16 @@ public class PlayerSetup : MonoBehaviour
 	public void SpawnDrink()
 	{
 		GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
-		newdrink.GetComponent<Outline>().enabled = false;
 		newdrink.SetActive(true);
+		myDrink = newdrink;
 	}
 
 	[PunRPC]
 	public void SpawnBurger()
 	{
 		GameObject newburger = Instantiate(burger, new Vector3(-26f, 5f, 23f), new Quaternion(0, 0, 0, 0));
-		newburger.GetComponent<Outline>().enabled = false;
 		newburger.SetActive(true);
+		myBurger = newburger;
 	}
 
 	[PunRPC]
