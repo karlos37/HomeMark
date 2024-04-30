@@ -185,6 +185,7 @@ public class PlayerSetup : MonoBehaviour
 	public void SpawnDrink()
 	{
 		GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
+		newdrink.GetComponent<Outline>().enabled = false;
 		newdrink.SetActive(true);
 	}
 
@@ -192,6 +193,7 @@ public class PlayerSetup : MonoBehaviour
 	public void SpawnBurger()
 	{
 		GameObject newburger = Instantiate(burger, new Vector3(-26f, 5f, 23f), new Quaternion(0, 0, 0, 0));
+		newburger.GetComponent<Outline>().enabled = false;
 		newburger.SetActive(true);
 	}
 
