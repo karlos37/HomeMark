@@ -530,7 +530,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8194448788706548631}
         m_TargetAssemblyTypeName: RoomItemButton, Assembly-CSharp
         m_MethodName: OnButtonPressed
         m_Mode: 1

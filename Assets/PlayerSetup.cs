@@ -124,20 +124,15 @@ public class PlayerSetup : MonoBehaviour
 					}
 					else if (currentTarget.name.Contains("Armchair"))
 					{
-						charControl.enabled = false;
-						transform.position = new Vector3(currentTarget.transform.position.x, currentTarget.transform.position.y + 0.5f, currentTarget.transform.position.z);
-						transform.rotation = Quaternion.LookRotation(currentTarget.transform.forward);
-						charControl.enabled = true;
+						view.RPC("Sit", RpcTarget.All);
 					}
 					else if (currentTarget.name == "Snack Machine")
 					{
-						GameObject newburger = Instantiate(burger, new Vector3(-26f, 5f, 23f), new Quaternion(0, 0, 0, 0));
-						newburger.SetActive(true);
+						view.RPC("SpawnBurger", RpcTarget.All);
 					}
 					else if (currentTarget.name == "Drink Machine")
 					{
-						GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
-						newdrink.SetActive(true);
+						view.RPC("SpawnDrink", RpcTarget.All);
 					}
 					else if (currentTarget.name.Contains("Drink") && myDrink == null)
 					{
@@ -160,11 +155,11 @@ public class PlayerSetup : MonoBehaviour
             }
 			if (myDrink != null)
 			{
-				myDrink.transform.position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z + 2f);
+				view.RPC("MoveDrink", RpcTarget.All);
 			}
 			if (myBurger != null)
 			{
-				myBurger.transform.position = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z + 2f);
+				view.RPC("MoveBurger", RpcTarget.All);
 			}
 		}
 		else
@@ -186,6 +181,41 @@ public class PlayerSetup : MonoBehaviour
 	public void PauseVideo()
 	{
 		GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Pause Button").gameObject.GetComponent<Button>().onClick.Invoke();
+	}
+
+	[PunRPC]
+	public void SpawnDrink()
+	{
+		GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
+		newdrink.SetActive(true);
+	}
+
+	[PunRPC]
+	public void SpawnBurger()
+	{
+		GameObject newburger = Instantiate(burger, new Vector3(-26f, 5f, 23f), new Quaternion(0, 0, 0, 0));
+		newburger.SetActive(true);
+	}
+
+	[PunRPC]
+	public void MoveBurger()
+	{
+		myBurger.transform.position = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z + 2f);
+	}
+
+	[PunRPC]
+	public void MoveDrink()
+	{
+		myDrink.transform.position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z + 2f);
+	}
+
+	[PunRPC]
+	public void Sit()
+	{
+		charControl.enabled = false;
+		transform.position = new Vector3(currentTarget.transform.position.x, currentTarget.transform.position.y + 0.5f, currentTarget.transform.position.z);
+		transform.rotation = Quaternion.LookRotation(currentTarget.transform.forward);
+		charControl.enabled = true;
 	}
 
 	public void ChangeBrightness(float amt)
