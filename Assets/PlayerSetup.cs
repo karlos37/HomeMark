@@ -21,8 +21,8 @@ public class PlayerSetup : MonoBehaviour
 	private MenuCharacterMenuController menuControl;
 	public GameObject light;
 
-	public GameObject burger;
-	public GameObject drink;
+	private GameObject burger;
+	private GameObject drink;
 
 	private GameObject myBurger;
 	private GameObject myDrink;
@@ -47,6 +47,8 @@ public class PlayerSetup : MonoBehaviour
 
 		myBurger = null;
 		myDrink = null;
+		burger = GameObject.Find("Burger");
+		drink = GameObject.Find("Drink");
 
 		videoPlayers = FindObjectsOfType<VideoPlayer>();
 
