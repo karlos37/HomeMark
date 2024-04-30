@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
 	public void goToCreateMenu()
 	{
 		CreateScreen.SetActive(true);
+		CreateScreen.GetComponent<CreateMenu>().SetScreen("name");
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(CreateScreen.transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 		gameObject.SetActive(false);

@@ -48,7 +48,6 @@ public class CreateMenu : MonoBehaviour
 		EventSystem.current.SetSelectedGameObject(transform.Find("Canvas").Find("CreatePanel").Find("NextButton").gameObject);
 
 		room = new Room(true);
-		current_screen = NAME;
 		player_name = "";
 
 		placeholder = transform.Find("Canvas").Find("CreatePanel").Find("RoomInput").GetChild(0).Find("Placeholder").gameObject;
