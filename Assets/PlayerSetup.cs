@@ -21,9 +21,6 @@ public class PlayerSetup : MonoBehaviour
 	private MenuCharacterMenuController menuControl;
 	public GameObject light;
 
-	private GameObject burger;
-	private GameObject drink;
-
 	private float speed;
 
 	public float defaultBrightness = 1f;
@@ -41,11 +38,6 @@ public class PlayerSetup : MonoBehaviour
 		charControl = GetComponent<CharacterController>();
 		menuControl = GetComponent<MenuCharacterMenuController>();
 		speed = 5f;
-
-		burger = GameObject.Find("Burger");
-		burger.SetActive(false);
-		drink = GameObject.Find("Drink");
-		drink.SetActive(false);
 
 		videoPlayers = FindObjectsOfType<VideoPlayer>();
 
@@ -129,13 +121,13 @@ public class PlayerSetup : MonoBehaviour
 					{
 						view.RPC("SpawnDrink", RpcTarget.All);
 					}
-					else if (currentTarget.name.Contains("Drink"))
+					else if (currentTarget.name == "Drink")
 					{
-						view.RPC("MoveDrink", RpcTarget.All, currentTarget.name);
+						view.RPC("MoveDrink", RpcTarget.All);
 					}
-					else if (currentTarget.name.Contains("Burger"))
+					else if (currentTarget.name == "Burger")
 					{
-						view.RPC("MoveBurger", RpcTarget.All, currentTarget.name);
+						view.RPC("MoveBurger", RpcTarget.All);
 					}
 					else if (currentTarget.name.Contains("Cockpit3_WithInterior"))
 					{
@@ -180,27 +172,27 @@ public class PlayerSetup : MonoBehaviour
 	[PunRPC]
 	public void SpawnDrink()
 	{
-		GameObject newdrink = Instantiate(drink, new Vector3(-26f, 5f, 0.5f), new Quaternion(0, 0, 0, 0));
-		newdrink.SetActive(true);
+		GameObject.Find("Drink").transform.position = new Vector3(-26f, 5f, 0.5f);
 	}
 
 	[PunRPC]
 	public void SpawnBurger()
 	{
-		GameObject newburger = Instantiate(burger, new Vector3(-26f, 5f, 23f), new Quaternion(0, 0, 0, 0));
-		newburger.SetActive(true);
+		GameObject.Find("Burger").transform.position = new Vector3(-26f, 5f, 23f);
 	}
 
 	[PunRPC]
-	public void MoveBurger(string objName)
+	public void MoveBurger()
 	{
-		GameObject.Find(objName).transform.position = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z + 2f);
+		GameObject.Find("Burger").transform.position = new Vector3(-26f, 5f, 25.5f);
+		transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
 	}
 
 	[PunRPC]
-	public void MoveDrink(string objName)
+	public void MoveDrink()
 	{
-		GameObject.Find(objName).transform.position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z + 2f);
+		GameObject.Find("Drink").transform.position = new Vector3(-26f, 5f, -2f);
+		transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
 	}
 
 	[PunRPC]
