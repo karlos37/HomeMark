@@ -161,7 +161,6 @@ public class PlayerSetup : MonoBehaviour
 	[PunRPC]
 	public void UpdateName()
 	{
-		Debug.Log(view.Owner.NickName);
 		transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().SetText(view.Owner.NickName);
 	}
 
