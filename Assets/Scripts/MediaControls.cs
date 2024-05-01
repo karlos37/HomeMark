@@ -14,17 +14,36 @@ public class MediaControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        videoPlayer = videoPlayerObject.GetComponent<VideoPlayer>();
-        videoPlayer.Pause();
+        videoPlayer = null;
     }
 
     public void PlayVideo()
     {
-         videoPlayer.Play();
+		if (videoPlayerObject.GetComponents<VideoPlayer>()[0].enabled)
+		{
+			Debug.Log("here");
+			videoPlayer = videoPlayerObject.GetComponents<VideoPlayer>()[0];
+		}
+		else
+		{
+			Debug.Log("there");
+			videoPlayer = videoPlayerObject.GetComponents<VideoPlayer>()[1];
+		}
+		videoPlayer.Play();
     }
 
     public void PauseVideo()
     {
-        videoPlayer.Pause();
+		if (videoPlayerObject.GetComponents<VideoPlayer>()[0].enabled)
+		{
+			Debug.Log("here");
+			videoPlayer = videoPlayerObject.GetComponents<VideoPlayer>()[0];
+		}
+		else
+		{
+			Debug.Log("there");
+			videoPlayer = videoPlayerObject.GetComponents<VideoPlayer>()[1];
+		}
+		videoPlayer.Pause();
     }
 }

@@ -18,7 +18,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public GameObject roomCam;
     public GameObject menuCharacter;
     public string roomNameToJoin = "test";
-    public VideoPlayer videoPlayer;
     public Material spaceSkyBoxMaterial;
     public Material mountainSkyboxMaterial;
     public GameObject theatre;
@@ -105,8 +104,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		print(PhotonNetwork.CurrentRoom.CustomProperties);
 		Room.Background bg = (Room.Background)PhotonNetwork.CurrentRoom.CustomProperties["background"];
         ChangeBackgroundSettings(bg,theatre, _player);
-        string movie_url = (string)PhotonNetwork.CurrentRoom.CustomProperties["movie_url"];
-        videoPlayer.url = movie_url;
+        int movie = (int)PhotonNetwork.CurrentRoom.CustomProperties["movie_url"];
+        GameObject.Find("Theater").transform.Find("Screen").gameObject.GetComponents<VideoPlayer>()[movie].enabled = true;
     }
 
     // Handle case when joining room fails

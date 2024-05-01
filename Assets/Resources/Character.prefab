@@ -218,7 +218,7 @@ MonoBehaviour:
   reticle: {fileID: 9113894303366540446}
   videoPlayers: []
   light: {fileID: 5673111888120456005}
-  menuCharacterObj: {fileID: 0}
+  menuCharacterObj: {fileID: 6282540482149467538}
   defaultBrightness: 1
   localLight: {fileID: 0}
 --- !u!114 &1127696056427816100
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticle: {fileID: 8413633092252818522}
-  menu: {fileID: 0}
+  menu: {fileID: 6282540482149467538}
   buttons:
   - {fileID: 0}
   - {fileID: 0}
@@ -1530,5 +1530,10 @@ PrefabInstance:
 --- !u!224 &964556631936014157 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8551319092436715098, guid: 22e8957b53a382448873fdfff1869657, type: 3}
+  m_PrefabInstance: {fileID: 8921252960902566167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6282540482149467538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3242232213558269061, guid: 22e8957b53a382448873fdfff1869657, type: 3}
   m_PrefabInstance: {fileID: 8921252960902566167}
   m_PrefabAsset: {fileID: 0}

@@ -226,9 +226,9 @@ public class CreateMenu : MonoBehaviour
 		}
 	}
 	
-	public void OnMovieSelected(string moviePath)
+	public void OnMovieSelected(int i)
 	{
-		room.movie = moviePath;
+		room.movie = i;
 		movieListPanel.SetActive(false);
 		gameObject.SetActive(false);
 		CreateRoom();
@@ -243,7 +243,7 @@ public class CreateMenu : MonoBehaviour
         roomList.ChangeRoomToCreateName(room.name);
 		roomManager.room = room;
 		roomManager.SetPlayerName(player_name);
-		roomManager.JoinRoomButtonPressed();
+		roomManager.CreateRoomButtonPressed();
     }
 
 	public void SetScreen(string screen)

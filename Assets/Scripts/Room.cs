@@ -7,17 +7,17 @@ public struct Room
 	public enum Background { Theatre, Mountain, Space }
 	
 	public string name { get; set; }
-	public string movie { get; set; }
+	public int movie { get; set; }
 	public Background background { get; set; }
 
 	public Room(bool defaultVal)
 	{
 		this.name = "";
-		this.movie = "";
+		this.movie = -1;
 		this.background = Background.Theatre;
 	}
 
-	public Room(string name, string movie, string background)
+	public Room(string name, int movie, string background)
 	{
 		this.name = name;
 		this.movie = movie;

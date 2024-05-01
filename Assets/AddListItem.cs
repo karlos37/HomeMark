@@ -5,10 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.IO;
+using System;
 
 public class AddListItem : MonoBehaviour
 {
-    public string folderPath = "Assets/Movies"; // Path to the folder containing videos
+    public string folderPath; // Path to the folder containing videos
     public GameObject moviesParent;
     public GameObject movieItemPrefab;
     public CreateMenu createMenu;
@@ -20,7 +21,10 @@ public class AddListItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _movies = Directory.GetFiles(folderPath, "*.mp4");
+		folderPath = "/storage/emulated/0/Android/data/com.DefaultCompany.HomeMark/files/";
+        _movies = new string[2];
+        _movies[0] = "/storage/emulated/0/Android/data/com.DefaultCompany.HomeMark/files/CINEVR - Movie Theater on Demand in VR.mp4";
+		_movies[1] = "/storage/emulated/0/Android/data/com.DefaultCompany.HomeMark/files/Oggy and the Cockroaches - Sport Fans (s04e26).mp4";
         if (_movies.Length == 0)
         {
             Debug.LogError("No Movies found in the folder path");
@@ -99,6 +103,7 @@ public class AddListItem : MonoBehaviour
     */
     private void OnMovieSelected(int i)
     {
-        createMenu.OnMovieSelected(_movies[i]);
+		createMenu.OnMovieSelected(i);
+        
     }
 }
