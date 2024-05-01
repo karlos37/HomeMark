@@ -282,6 +282,7 @@ public class PlayerSetup : MonoBehaviour
 			print(GameObject.Find("RoomManager").name);
 			GameObject.Find("GameMenus").transform.Find("MenuScreen").gameObject.SetActive(true);
 			GameObject.Find("RoomManager").SetActive(false);
+			GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Pause Button").gameObject.GetComponent<Button>().onClick.Invoke();
 			menuCharacterObj.SetActive(true);
 			EventSystem.current.SetSelectedGameObject(GameObject.Find("GameMenus")
 				.transform.Find("MenuScreen").Find("Canvas").Find("IntroPanel").Find("Create Room Button").gameObject);
