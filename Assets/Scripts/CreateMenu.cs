@@ -149,6 +149,7 @@ public class CreateMenu : MonoBehaviour
 		{
 			if (next)
 			{
+				player_name = inputField.text;
 				JoinScreen.SetActive(true);
 				JoinScreen.GetComponent<RoomList>().SetPlayerName(player_name);
 			}
@@ -207,13 +208,12 @@ public class CreateMenu : MonoBehaviour
 	{
         //ENABLE THE ROOM MANAGER
         RoomManager.SetActive(true);
-		roomManager.SetPlayerName(player_name);
 
-		//CREATE THE ROOM BY SENDING THE NAME, YOU CAN SEND OTHER THINGS HERE TOO, BUT YOU MUST CREATE RECEIVING FUNCTIONS IN OTHER SCRIPTS TOO
-		roomList.ChangeRoomToCreateName(room.name);
+        //CREATE THE ROOM BY SENDING THE NAME, YOU CAN SEND OTHER THINGS HERE TOO, BUT YOU MUST CREATE RECEIVING FUNCTIONS IN OTHER SCRIPTS TOO
+        roomList.ChangeRoomToCreateName(room.name);
 		roomManager.room = room;
-		
-		roomManager.CreateRoomButtonPressed();
+		roomManager.SetPlayerName(player_name);
+		roomManager.JoinRoomButtonPressed();
     }
 
 	public void SetScreen(string screen)

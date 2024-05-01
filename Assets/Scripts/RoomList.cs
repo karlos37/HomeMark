@@ -17,7 +17,7 @@ public class RoomList : MonoBehaviourPunCallbacks
     public GameObject roomListItemPrefab;
 
     private List<RoomInfo> cachedRoomList = new List<RoomInfo>();
-	private string playerName;
+	public string playerName;
 
 	public void ChangeRoomToCreateName(string _roomName)
     {
