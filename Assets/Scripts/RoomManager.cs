@@ -100,7 +100,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 		// Instantiate player at spawn point
 		GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
         _player.GetComponent<PhotonView>().Owner.NickName = playerName;
-
+        PlayerSetup playerSetup = _player.GetComponent<PlayerSetup>();
+        playerSetup.menuCharacterObj = menuCharacter;
 		print(PhotonNetwork.CurrentRoom.CustomProperties);
 		Room.Background bg = (Room.Background)PhotonNetwork.CurrentRoom.CustomProperties["background"];
         ChangeBackgroundSettings(bg,theatre, _player);
