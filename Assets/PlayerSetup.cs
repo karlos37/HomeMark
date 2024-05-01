@@ -21,6 +21,7 @@ public class PlayerSetup : MonoBehaviour
 	private CharacterController charControl;
 	private MenuCharacterMenuController menuControl;
 	public GameObject light;
+	public GameObject menuCharacterObj;
 
 	private float speed;
 
@@ -39,7 +40,6 @@ public class PlayerSetup : MonoBehaviour
 		charControl = GetComponent<CharacterController>();
 		menuControl = GetComponent<MenuCharacterMenuController>();
 		speed = 5f;
-
 		videoPlayers = FindObjectsOfType<VideoPlayer>();
 
 		localLight = FindObjectOfType<Light>();
@@ -273,4 +273,19 @@ public class PlayerSetup : MonoBehaviour
 		transform.position = Vector3.Lerp(transform.position, TargetPosition, 0.01f);
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500 * Time.deltaTime);
 	}
+	
+	public void OnPlayerExit()
+	{
+		if (view.IsMine)
+		{
+			PhotonNetwork.LeaveRoom();
+			print(GameObject.Find("RoomManager").name);
+			GameObject.Find("GameMenus").transform.Find("MenuScreen").gameObject.SetActive(true);
+			GameObject.Find("RoomManager").SetActive(false);
+			menuCharacterObj.SetActive(true);
+			EventSystem.current.SetSelectedGameObject(GameObject.Find("GameMenus")
+				.transform.Find("MenuScreen").Find("Canvas").Find("IntroPanel").Find("Create Room Button").gameObject);
+		}
+	}
+
 }

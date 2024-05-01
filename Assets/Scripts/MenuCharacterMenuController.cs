@@ -37,8 +37,7 @@ public class MenuCharacterMenuController : MonoBehaviour
             menuActive = !menuActive;
 
 			EventSystem.current.SetSelectedGameObject(null);
-			EventSystem.current.SetSelectedGameObject(transform.GetChild(0).GetChild(0).Find("VolUp").gameObject);
-
+			EventSystem.current.SetSelectedGameObject(transform.Find("HeightOffset").Find("Menu").Find("VolUp").gameObject);
 		}
         if (menuActive)
         {
