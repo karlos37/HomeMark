@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Video;
 
 using Photon.Pun;
+using TMPro;
 
 public class PlayerSetup : MonoBehaviour
 {
@@ -55,13 +56,13 @@ public class PlayerSetup : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		transform.GetChild(0).GetChild(0).position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		if (view.IsMine)
 		{
 			RegularMove();
 			cameraObj.SetActive(true);
 			light.SetActive(true);
 			menuControl.enabled = true;
+			view.RPC("UpdateName", RpcTarget.All);
 
 			Vector3 rayStart = cameraObj.GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5F, 0.5F, 0));
 			if (Physics.Raycast(rayStart, cameraObj.transform.forward, out hit, 50))
@@ -155,6 +156,13 @@ public class PlayerSetup : MonoBehaviour
 			light.SetActive(false);
 			menuControl.enabled = false;
 		}
+	}
+
+	[PunRPC]
+	public void UpdateName()
+	{
+		Debug.Log(view.Owner.NickName);
+		transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().SetText(view.Owner.NickName);
 	}
 
 	[PunRPC]

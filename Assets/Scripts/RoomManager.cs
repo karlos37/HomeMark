@@ -99,9 +99,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
         menuCharacter.SetActive(false);
 		// Instantiate player at spawn point
 		GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint.position, Quaternion.identity);
-        _player.transform.GetChild(0).GetChild(0).GameObject().GetComponent<TMP_Text>().SetText("acbdefg");
-        
-        print(PhotonNetwork.CurrentRoom.CustomProperties);
+        _player.GetComponent<PhotonView>().Owner.NickName = playerName;
+
+		print(PhotonNetwork.CurrentRoom.CustomProperties);
 		Room.Background bg = (Room.Background)PhotonNetwork.CurrentRoom.CustomProperties["background"];
         ChangeBackgroundSettings(bg,theatre, _player);
         string movie_url = (string)PhotonNetwork.CurrentRoom.CustomProperties["movie_url"];
