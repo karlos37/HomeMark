@@ -15,7 +15,7 @@ public class LoadBackgrounds : MonoBehaviour
     
     private string[] _background;
     private Button[] _buttons;
-    private int _selectedButtonIndex = -1;
+    //private int _selectedButtonIndex = -1;
 
     private Array _bgs;
     // Start is called before the first frame update
@@ -27,20 +27,39 @@ public class LoadBackgrounds : MonoBehaviour
         {
             Room.Background bg = (Room.Background) _bgs.GetValue(i);
             GameObject backgroundItem = Instantiate(backgroundListItemPrefab, backgroundListParent.transform);
+            if (i == 0)
+            {
+				EventSystem.current.SetSelectedGameObject(null);
+				EventSystem.current.SetSelectedGameObject(backgroundItem);
+			}
             TextMeshProUGUI nameText = backgroundItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             nameText.text = "  " + bg;
             Button button = backgroundItem.GetComponent<Button>();
-            _buttons[i] = button;
+			_buttons[i] = button;
             int index = i;
             button.onClick.AddListener(() => OnBackgroundSelected(index));
         }
-        _buttons[^1] = backButton;
-        _selectedButtonIndex = 0;
+		_buttons[^1] = backButton;
 
-		EventSystem.current.SetSelectedGameObject(null);
-		EventSystem.current.SetSelectedGameObject(_buttons[_selectedButtonIndex].gameObject);
+		for (int i = 0; i < _buttons.Length; i++)
+        {
+			Navigation navigation = _buttons[i].navigation;
+			navigation.mode = Navigation.Mode.Explicit;
+			if (i > 0)
+			{
+				navigation.selectOnLeft = _buttons[i - 1];
+				navigation.selectOnUp = _buttons[i - 1];
+			}
+			if (i < _buttons.Length - 1)
+            {
+				navigation.selectOnRight = _buttons[i + 1];
+				navigation.selectOnDown = _buttons[i + 1];
+			}
+            _buttons[i].navigation = navigation;
+		}
+        //_selectedButtonIndex = 0;
 	}
-
+    /*
     // Update is called once per frame
     void Update()
     {
@@ -66,7 +85,7 @@ public class LoadBackgrounds : MonoBehaviour
         }
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_buttons[_selectedButtonIndex].gameObject);
-    }
+    }*/
 
     void OnBackgroundSelected(int i)
     {

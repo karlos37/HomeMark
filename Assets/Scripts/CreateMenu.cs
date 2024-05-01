@@ -29,6 +29,7 @@ public class CreateMenu : MonoBehaviour
 	public GameObject movieListPanel;
 	public GameObject backgroundListPane;
 	public GameObject nextButton;
+	public GameObject backButton;
 
 	private const string ROOM_NAME_PLACEHOLDER = "Enter Room Name";
 	private const string ROOM_USER_PLACEHOLDER = "Enter User Name";
@@ -134,6 +135,12 @@ public class CreateMenu : MonoBehaviour
 				_navigationGameObject.SetActive(false);
 				_keyboardInstructionsGameObject.SetActive(false);
 
+				if (GameObject.Find("BackroundListItem(Clone)") != null)
+				{
+					EventSystem.current.SetSelectedGameObject(null);
+					EventSystem.current.SetSelectedGameObject(GameObject.Find("BackroundListItem(Clone)"));
+				}
+
 				current_screen = BACKGROUND;
 			}
 			else
@@ -172,6 +179,12 @@ public class CreateMenu : MonoBehaviour
 		_navigationGameObject.SetActive(true);
 		_keyboardInstructionsGameObject.SetActive(true);
 
+		Navigation navigation = backButton.GetComponent<Button>().navigation;
+		navigation.mode = Navigation.Mode.Explicit;
+		navigation.selectOnLeft = nextButton.GetComponent<Button>();
+		navigation.selectOnUp = nextButton.GetComponent<Button>();
+		backButton.GetComponent<Button>().navigation = navigation;
+
 		placeholder.GetComponent<TextMeshProUGUI>().text = ROOM_USER_PLACEHOLDER;
 		inputField.text = player_name;
 		EventSystem.current.SetSelectedGameObject(null);
@@ -186,6 +199,18 @@ public class CreateMenu : MonoBehaviour
 		current_screen = BACKGROUND;
 		movieListPanel.SetActive(false);
 		backgroundListPane.SetActive(true);
+
+		Navigation navigation = backButton.GetComponent<Button>().navigation;
+		navigation.mode = Navigation.Mode.Explicit;
+		navigation.selectOnLeft = GameObject.Find("BackroundListItem(Clone)").GetComponent<Button>();
+		navigation.selectOnUp = GameObject.Find("BackroundListItem(Clone)").GetComponent<Button>();
+		backButton.GetComponent<Button>().navigation = navigation;
+
+		if (GameObject.Find("BackroundListItem(Clone)") != null)
+		{
+			EventSystem.current.SetSelectedGameObject(null);
+			EventSystem.current.SetSelectedGameObject(GameObject.Find("BackroundListItem(Clone)"));
+		}
 	}
 	
 	public void OnBackgroundSelected(Background bg)
@@ -194,6 +219,11 @@ public class CreateMenu : MonoBehaviour
 		current_screen = MOVIE;
 		backgroundListPane.SetActive(false);
 		movieListPanel.SetActive(true);
+		if (GameObject.Find("MovieListItem(Clone)") != null)
+		{
+			EventSystem.current.SetSelectedGameObject(null);
+			EventSystem.current.SetSelectedGameObject(GameObject.Find("MovieListItem(Clone)").transform.GetChild(1).gameObject);
+		}
 	}
 	
 	public void OnMovieSelected(string moviePath)

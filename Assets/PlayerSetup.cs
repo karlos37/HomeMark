@@ -100,8 +100,7 @@ public class PlayerSetup : MonoBehaviour
 					}
                 }
 
-				//if (Input.GetButtonDown("js2"))
-				if (Input.GetKeyDown("x"))
+				if (Input.GetButtonDown("js2"))
 				{
 					if (currentTarget.name == "PlayCollider")
 					{

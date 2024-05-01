@@ -16,7 +16,7 @@ public class AddListItem : MonoBehaviour
     
     private string[] _movies;
     private Button[] _buttons;
-    private int _selectedButtonIndex;
+    //private int _selectedButtonIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,14 +36,19 @@ public class AddListItem : MonoBehaviour
         for (int i=0; i < _movies.Length; i++)
         {
             GameObject movieItem = Instantiate(movieItemPrefab, moviesParent.transform);
-            TextMeshProUGUI numberText = movieItem.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+			TextMeshProUGUI numberText = movieItem.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
             numberText.text = (i + 1).ToString();
 
             TextMeshProUGUI nameText = movieItem.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
             nameText.text = "  " + filenames[i];
 
             Button button = movieItem.transform.GetChild(1).GetComponent<Button>();
-            _buttons[i] = button;
+			if (i == 0)
+			{
+				EventSystem.current.SetSelectedGameObject(null);
+				EventSystem.current.SetSelectedGameObject(movieItem.transform.GetChild(1).gameObject);
+			}
+			_buttons[i] = button;
 
             int index = i;
             button.onClick.AddListener(() => OnMovieSelected(index));
@@ -51,11 +56,25 @@ public class AddListItem : MonoBehaviour
 
         _buttons[_movies.Length] = backButton;
 
-		EventSystem.current.SetSelectedGameObject(null);
-		EventSystem.current.SetSelectedGameObject(_buttons[0].gameObject);
+		for (int i = 0; i < _buttons.Length; i++)
+		{
+			Navigation navigation = _buttons[i].navigation;
+			navigation.mode = Navigation.Mode.Explicit;
+			if (i > 0)
+			{
+				navigation.selectOnLeft = _buttons[i - 1];
+				navigation.selectOnUp = _buttons[i - 1];
+			}
+			if (i < _buttons.Length - 1)
+			{
+				navigation.selectOnRight = _buttons[i + 1];
+				navigation.selectOnDown = _buttons[i + 1];
+			}
+			_buttons[i].navigation = navigation;
+		}
 	}
     
-
+    /*
     // Update is called once per frame
     void Update()
     {
@@ -77,7 +96,7 @@ public class AddListItem : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_buttons[_selectedButtonIndex].gameObject);
     }
-
+    */
     private void OnMovieSelected(int i)
     {
         createMenu.OnMovieSelected(_movies[i]);

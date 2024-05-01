@@ -2884,6 +2884,7 @@ MonoBehaviour:
   roomManager: {fileID: 445389685}
   roomListParent: {fileID: 813279426}
   roomListItemPrefab: {fileID: 1570341874880561927, guid: 1e33e909bdeac2a43bf96c0545d854b6, type: 3}
+  playerName: 
 --- !u!1 &511639009
 GameObject:
   m_ObjectHideFlags: 0
@@ -7866,6 +7867,7 @@ MonoBehaviour:
   movieListPanel: {fileID: 511639009}
   backgroundListPane: {fileID: 88385194}
   nextButton: {fileID: 673626057}
+  backButton: {fileID: 844787582}
 --- !u!1 &1156236970
 GameObject:
   m_ObjectHideFlags: 0
@@ -8147,6 +8149,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3434186225312940170, guid: 9d7b4d57d437c46e482cb2149a0c553c, type: 3}
       propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434186225312940170, guid: 9d7b4d57d437c46e482cb2149a0c553c, type: 3}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8174276573716285849, guid: 9d7b4d57d437c46e482cb2149a0c553c, type: 3}
@@ -10092,6 +10098,10 @@ PrefabInstance:
     - target: {fileID: 7139977530783223444, guid: abed82ae14f781449b47422424c8ba10, type: 3}
       propertyPath: m_Name
       value: MovieListItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139977531712137390, guid: abed82ae14f781449b47422424c8ba10, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7139977531736521026, guid: abed82ae14f781449b47422424c8ba10, type: 3}
       propertyPath: m_Pivot.x
