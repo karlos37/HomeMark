@@ -1,5 +1,3 @@
-GitHub link: [https://github.com/karlos37/HomeMark](https://github.com/karlos37/HomeMark)
-
 Instructions to start the project
 
 1. Scene to Play : Theatre.Scene (Assets/Scenes/Theatre.unity)
