@@ -34,10 +34,15 @@ public class RoomList : MonoBehaviourPunCallbacks
     public override void OnEnable()
     {
         base.OnEnable();
-        if (roomObjList.Count > 0)
+        if (roomListParent.childCount > 1)
         {
-            EventSystem.current.SetSelectedGameObject(roomObjList[0]);
-
+            Debug.Log("selecting movie");
+            EventSystem.current.SetSelectedGameObject(roomListParent.GetChild(1).gameObject);
+        }
+        else
+        {
+            Debug.Log("Joining lobby");
+            PhotonNetwork.JoinLobby();
         }
     }
 
@@ -63,6 +68,7 @@ public class RoomList : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        Debug.Log("Updating room list");
         if (cachedRoomList.Count <= 0)
         {
             cachedRoomList = roomList;

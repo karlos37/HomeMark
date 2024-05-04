@@ -118,26 +118,39 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         GameObject cameraObj =
             _player.transform.GetChild(0).Find("MainCamera").gameObject;
+        GameObject mountain = theater1.transform.Find("Plane").Find("Snow_mountain").gameObject;
+        GameObject ship1 = theater1.transform.Find("Plane").Find("Example1_Red").gameObject;
+        GameObject ship2 = theater1.transform.Find("Plane").Find("Example2_Grey").gameObject;
+        GameObject ship3 = theater1.transform.Find("Plane").Find("Example5_Grey").gameObject;
         switch (bg)
         {
             case Room.Background.Mountain:
                 print("SnowMountain Background Selected For room");
                 AddSkyBoxAndHideFloor(cameraObj, mainFloor, theater1, mountainSkyboxMaterial);
-                GameObject mountain = theater1.transform.Find("Plane").Find("Snow_mountain").gameObject;
                 mountain.SetActive(true);
+                ship1.SetActive(false);
+                ship2.SetActive(false);
+                ship3.SetActive(false);
                 break;
             case Room.Background.Space:
                 print("Space Backround Selected for room");
                 AddSkyBoxAndHideFloor(cameraObj, mainFloor, theater1,spaceSkyBoxMaterial);
-                GameObject ship1 = theater1.transform.Find("Plane").Find("Example1_Red").gameObject;
-                GameObject ship2 = theater1.transform.Find("Plane").Find("Example2_Grey").gameObject;
-                GameObject ship3 = theater1.transform.Find("Plane").Find("Example5_Grey").gameObject;
+                mountain.SetActive(false);
                 ship1.SetActive(true);
                 ship2.SetActive(true);
                 ship3.SetActive(true);
                 break;
             default:
                 print("Theatre background selected for room");
+                MeshRenderer floorMeshRenderer = mainFloor.GetComponent<MeshRenderer>();
+                floorMeshRenderer.enabled = true;
+                _seats.SetActive(true);
+                _stairs.SetActive(true);
+                _levels.SetActive(true);
+                mountain.SetActive(false);
+                ship1.SetActive(false);
+                ship2.SetActive(false);
+                ship3.SetActive(false);
                 break;
         }
     }
