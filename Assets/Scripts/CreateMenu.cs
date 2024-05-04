@@ -228,9 +228,11 @@ public class CreateMenu : MonoBehaviour
 	
 	public void OnMovieSelected(int i)
 	{
+		// Set the state of the menu to default
 		nextButton.SetActive(true);
 		_keyboardObject.SetActive(true);
 		_inputGameObject.SetActive(true);
+		inputField.text = "";
 		_navigationGameObject.SetActive(true);
 		_keyboardInstructionsGameObject.SetActive(true);
 		

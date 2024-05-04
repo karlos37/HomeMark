@@ -34,10 +34,13 @@ public class RoomList : MonoBehaviourPunCallbacks
     public override void OnEnable()
     {
         base.OnEnable();
-        if (roomObjList.Count > 0)
+        if (roomListParent.childCount > 1)
         {
-            EventSystem.current.SetSelectedGameObject(roomObjList[0]);
-
+            EventSystem.current.SetSelectedGameObject(roomListParent.GetChild(1).gameObject);
+        }
+        else
+        {
+            PhotonNetwork.JoinLobby();
         }
     }
 
