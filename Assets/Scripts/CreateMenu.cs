@@ -228,6 +228,12 @@ public class CreateMenu : MonoBehaviour
 	
 	public void OnMovieSelected(int i)
 	{
+		nextButton.SetActive(true);
+		_keyboardObject.SetActive(true);
+		_inputGameObject.SetActive(true);
+		_navigationGameObject.SetActive(true);
+		_keyboardInstructionsGameObject.SetActive(true);
+		
 		room.movie = i;
 		movieListPanel.SetActive(false);
 		gameObject.SetActive(false);
@@ -236,6 +242,7 @@ public class CreateMenu : MonoBehaviour
 
 	void CreateRoom()
 	{
+		
         //ENABLE THE ROOM MANAGER
         RoomManager.SetActive(true);
 

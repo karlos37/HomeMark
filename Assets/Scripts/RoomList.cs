@@ -17,16 +17,28 @@ public class RoomList : MonoBehaviourPunCallbacks
     public GameObject roomListItemPrefab;
 
     private List<RoomInfo> cachedRoomList = new List<RoomInfo>();
-	public string playerName;
+    private List<GameObject> roomObjList = new List<GameObject>();
+    
+    public string playerName;
 
 	public void ChangeRoomToCreateName(string _roomName)
     {
         roomManager.roomNameToJoin = _roomName;
     }
-
+    
     private void Awake()
     {
         instance = this;
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        if (roomObjList.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(roomObjList[0]);
+
+        }
     }
 
     IEnumerator Start()
@@ -91,6 +103,7 @@ public class RoomList : MonoBehaviourPunCallbacks
             Destroy(roomItem.gameObject);
         }
 
+        roomObjList = new List<GameObject>();
         foreach (var room in cachedRoomList)
         {
             GameObject roomItem = Instantiate(roomListItemPrefab, roomListParent);
@@ -105,6 +118,7 @@ public class RoomList : MonoBehaviourPunCallbacks
 
 			EventSystem.current.SetSelectedGameObject(null);
 			EventSystem.current.SetSelectedGameObject(roomItem);
+            roomObjList.Add(roomItem);
 		}
     }
 
