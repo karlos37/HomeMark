@@ -167,7 +167,6 @@ public class PlayerSetup : MonoBehaviour
 	[PunRPC]
 	public void PlayVideo()
 	{
-		Debug.Log("press");
 		GameObject.Find("Theater").transform.Find("Remote Control").Find("VideControl Canvas").Find("Play Button").gameObject.GetComponent<Button>().onClick.Invoke();
 	}
 

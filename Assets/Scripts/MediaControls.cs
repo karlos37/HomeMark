@@ -21,12 +21,10 @@ public class MediaControls : MonoBehaviour
     {
 		if (videoPlayerObject.GetComponents<VideoPlayer>()[0].enabled)
 		{
-			Debug.Log("here");
 			videoPlayer = videoPlayerObject.GetComponents<VideoPlayer>()[0];
 		}
 		else
 		{
-			Debug.Log("there");
 			videoPlayer = videoPlayerObject.GetComponents<VideoPlayer>()[1];
 		}
 		videoPlayer.Play();
